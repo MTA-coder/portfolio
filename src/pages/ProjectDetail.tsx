@@ -36,12 +36,94 @@ interface ProjectData {
   client: string
   date: string
   technologies: string[]
-  features: string[]
+  features?: string[]
+  featureSections?: Array<{
+    title: string
+    items: string[]
+  }>
   demoUrl?: string
   githubUrl?: string
 }
 
 const projects: Record<string, ProjectData> = {
+  'pro-decor': {
+    id: 'pro-decor',
+    title: 'Pro Decor – VIP Dynamic Landing Page',
+    description:
+      'Pro Decor is a fully dynamic, multilingual landing page crafted for VIP customers in interior design and home improvement. Built on REST APIs, it delivers seamless content management across Arabic, English, Dutch, and Finnish, with an elegant experience optimized for web, mobile, and flat screens.',
+    coverImage: '/assets/pro-decor/Hero Section ProDecor.jpg',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/pro-decor/Hero Section ProDecor.jpg',
+        caption: 'Hero section highlighting premium services',
+      },
+      {
+        type: 'image',
+        url: '/assets/pro-decor/Section Services ProDecor.jpg',
+        caption: 'Services section with image, name, and description',
+      },
+      {
+        type: 'image',
+        url: '/assets/pro-decor/Section History ProDecor.jpg',
+        caption: 'Company history and “Who We Are” storytelling',
+      },
+      {
+        type: 'image',
+        url: '/assets/pro-decor/About Us.jpg',
+        caption: 'About us section and brand narrative',
+      },
+      {
+        type: 'image',
+        url: '/assets/pro-decor/Dashboard Services CRUD ProDecor.jpg',
+        caption: 'Admin dashboard for multilingual content control',
+      },
+    ],
+    client: 'Pro Decor',
+    date: '2024',
+    technologies: [
+      'Angular',
+      'HTML',
+      'SCSS',
+      'TypeScript',
+      'Laravel',
+      'PHP',
+      'MySQL',
+      'REST APIs',
+      'Node.js',
+      'Linux (IONOS Germany)',
+    ],
+    featureSections: [
+      {
+        title: 'Customer Experience & Platform Capabilities',
+        items: [
+          'Dynamic & multilingual content (AR, EN, DU, FI)',
+          'Image & video sliders to showcase services and projects',
+          'Services section with image, name, and description',
+          'Portfolio gallery with high-quality imagery',
+          'Embedded YouTube videos for engagement',
+          'News & offers section with image, name, and description',
+          'Company history and “Who We Are” storytelling',
+          'Meet the Team introductions',
+          'Contact form for service requests via email',
+          'Integrated Google Maps location',
+          'Customer reviews & testimonials',
+          'Admin dashboard with login for full content control',
+        ],
+      },
+      {
+        title: 'Engineering Impact & Performance Leadership',
+        items: [
+          'Performance optimizations: lazy loading, gzip compression, CSS minification',
+          'Results: FCP 2.65s → 400ms, LCP 8.24s → 1.63s, score 15% → 97%',
+          'Role: Frontend UI/UX in Angular (SCSS, TypeScript)',
+          'Role: Backend REST APIs in Laravel & MySQL',
+          'Role: API & dashboard validations',
+          'Role: Hosting & deployment on IONOS Germany server',
+        ],
+      },
+    ],
+  },
   correspondence: {
     id: 'correspondence',
     title: 'Automated Correspondence System',
@@ -550,19 +632,43 @@ const ProjectDetail = () => {
                 </div>
 
                 {/* Features */}
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-bold">Key Features</h2>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-5 h-5 rounded-full bg-tech-purple/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-                          <div className="w-2 h-2 rounded-full bg-tech-purple"></div>
-                        </div>
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
+                {project.featureSections?.length ? (
+                  <div className="space-y-10">
+                    {project.featureSections.map((section, sectionIndex) => (
+                      <div key={sectionIndex} className="space-y-4">
+                        <h2 className="text-2xl font-bold">{section.title}</h2>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {section.items.map((feature, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <div className="w-5 h-5 rounded-full bg-tech-purple/20 flex-shrink-0 flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 rounded-full bg-tech-purple"></div>
+                              </div>
+                              <span className="text-muted-foreground">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
-                  </ul>
-                </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <h2 className="text-2xl font-bold">Key Features</h2>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {(project.features ?? []).map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <div className="w-5 h-5 rounded-full bg-tech-purple/20 flex-shrink-0 flex items-center justify-center mt-0.5">
+                            <div className="w-2 h-2 rounded-full bg-tech-purple"></div>
+                          </div>
+                          <span className="text-muted-foreground">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {/* Sidebar */}

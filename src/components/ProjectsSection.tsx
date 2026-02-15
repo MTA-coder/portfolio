@@ -22,6 +22,15 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
+      id: 'pro-decor',
+      title: 'Pro Decor – VIP Dynamic Landing Page',
+      description:
+        'Multilingual VIP landing page with rich media, REST APIs, and a secure admin dashboard for end-to-end content control.',
+      image: '/assets/pro-decor/Hero Section ProDecor.jpg',
+      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'REST APIs'],
+      featured: true,
+    },
+    {
       id: 'correspondence',
       title: 'Automated Correspondence System',
       description:
@@ -86,6 +95,7 @@ const ProjectsSection = () => {
     'Angular',
     'ASP.NET Core',
     'Laravel',
+    'PHP',
     'AI Integration',
   ]
 

@@ -27,6 +27,17 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      id: 'pro-decor',
+      title: 'Pro Decor – VIP Dynamic Landing Page',
+      description:
+        'Premium multilingual landing experience for VIP clients, powered by REST APIs and an admin dashboard for full content control across four languages.',
+      image: '/assets/pro-decor/Hero Section ProDecor.jpg',
+      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'REST APIs', 'Multilingual'],
+      client: 'Pro Decor',
+      year: '2024',
+      featured: true,
+    },
+    {
       id: 'correspondence',
       title: 'Automated Correspondence System',
       description:
@@ -124,6 +135,7 @@ const Projects = () => {
     'Angular',
     'ASP.NET Core',
     'Laravel',
+    'PHP',
     'SQL Server',
     'AI Integration',
   ]
