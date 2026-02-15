@@ -22,6 +22,16 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
+      id: 'nova-tech',
+      title: 'We Nova-Tech – Dynamic Company Platform',
+      description:
+        'High-performance landing page plus CMS dashboard for dynamic company content and branding.',
+      image: '/assets/nova-tech/NovaTech%20Landing%20Page.png',
+      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'REST APIs'],
+      demoUrl: 'https://galaxy-pi-mauve.vercel.app',
+      featured: true,
+    },
+    {
       id: 'issan-mosque-dmk',
       title: 'Ihssan Mosque DMK – Donation & Services Website',
       description:

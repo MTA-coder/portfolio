@@ -46,6 +46,128 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  'nova-tech': {
+    id: 'nova-tech',
+    title: 'We Nova-Tech – Dynamic Company Platform & Smart Landing Ecosystem',
+    description:
+      'We Nova-Tech is a fully dynamic, enterprise-style company platform combining a high-performance landing experience with a powerful administration dashboard. It demonstrates API-driven content control, scalable architecture, and modern digital branding designed for real-world production use.',
+    coverImage: '/assets/nova-tech/NovaTech%20Landing%20Page.png',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/nova-tech/NovaTech%20Landing%20Page.png',
+        caption: 'Landing page hero with modern company branding',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Landing%20Page%20Services.png',
+        caption: 'Dynamic services section rendered from APIs',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Landing%20Page%20Work%20Section.png',
+        caption: 'Portfolio showcase optimized for hiring and sales',
+      },
+      {
+        type: 'image',
+        url:
+          '/assets/nova-tech/Landing%20Page%20Nova%20Tech%20Technologies.png',
+        caption: 'Technology stack showcase for credibility and clarity',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Landing%20Page%20About%20Us.png',
+        caption: 'Company information and about sections',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Landing%20Page%20Who%20we%20are.png',
+        caption: 'Storytelling section with structured content',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Dashboard%20Nova%20Tech.png',
+        caption: 'Admin dashboard overview with full content control',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Dashboard%20Services.png',
+        caption: 'Services management with CRUD operations',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Dasboard%20Service%20Form.png',
+        caption: 'Service details and feature highlights editor',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Dashboard%20Information.png',
+        caption: 'Company information and branding management',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Dashboard%20Form.png',
+        caption: 'Dynamic forms with validation and secure handling',
+      },
+      {
+        type: 'image',
+        url: '/assets/nova-tech/Poicy%20and%20Terms.png',
+        caption: 'Policy and terms content management',
+      },
+    ],
+    client: 'We Nova-Tech',
+    date: '2024',
+    technologies: [
+      'Angular',
+      'HTML5',
+      'SCSS',
+      'TypeScript',
+      'Laravel',
+      'PHP',
+      'MySQL',
+      'REST APIs',
+      'Vercel',
+      'IONOS (Germany)',
+      'Linux',
+    ],
+    featureSections: [
+      {
+        title: 'Platform Capabilities & Experience',
+        items: [
+          'Fully dynamic content controlled via an admin dashboard',
+          'Company branding, logo, and information management',
+          'Services and service details CRUD with feature highlights',
+          'Portfolio management across web, mobile, and applications',
+          'Technology stack showcase for credibility and clarity',
+          'Dynamic section ordering and visibility control',
+          'SEO-friendly content structure and performance-optimized rendering',
+          'Modular layout ready for future expansion',
+        ],
+      },
+      {
+        title: 'Engineering Impact & Delivery',
+        items: [
+          'API-first architecture separating frontend and backend',
+          'Reusable component strategy and clean service layers',
+          'Optimized API calls with lazy rendering and lightweight DOM flow',
+          'Authentication, validation, and secure data handling',
+          'Scalable backend structure following REST standards',
+          'Production deployment across Vercel and IONOS infrastructure',
+          'Ownership across architecture, build, deployment, and optimization',
+        ],
+      },
+      {
+        title: 'Business Value Delivered',
+        items: [
+          'Faster marketing updates without developer dependency',
+          'Professional company branding structure for credibility',
+          'Reduced operational costs through dashboard automation',
+          'Scalable foundation for multi-company or SaaS evolution',
+        ],
+      },
+    ],
+    demoUrl: 'https://galaxy-pi-mauve.vercel.app',
+  },
   'issan-mosque-dmk': {
     id: 'issan-mosque-dmk',
     title: 'Ihssan Mosque DMK – Donation & Services Website',
