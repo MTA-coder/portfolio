@@ -27,6 +27,25 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      id: 'issan-mosque-dmk',
+      title: 'Ihssan Mosque DMK – Donation & Services Website',
+      description:
+        'Dynamic, multilingual donation platform with education program registrations, multi-gateway payments, and a full admin dashboard for charities.',
+      image: '/assets/ihssan-dmk/Hero%20section.jpg',
+      tags: [
+        'Angular',
+        'Laravel',
+        'PHP',
+        'MySQL',
+        'REST APIs',
+        'Payments',
+        'SEO',
+      ],
+      client: 'Ihssan Mosque DMK',
+      year: '2024',
+      featured: true,
+    },
+    {
       id: 'pro-decor',
       title: 'Pro Decor – VIP Dynamic Landing Page',
       description:

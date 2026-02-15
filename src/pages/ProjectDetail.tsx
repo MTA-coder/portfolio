@@ -46,6 +46,102 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  'issan-mosque-dmk': {
+    id: 'issan-mosque-dmk',
+    title: 'Ihssan Mosque DMK – Donation & Services Website',
+    description:
+      'Ihssan Mosque DMK is a fully dynamic, multilingual platform built to streamline online donations and educational program registrations for a mosque in Germany. It supports direct and on‑behalf donations, multiple payment gateways, IBAN payments for education programs, real‑time statistics, and SEO‑optimized content that works flawlessly across mobile, web, laptops, and flat screens.',
+    coverImage: '/assets/ihssan-dmk/Hero%20section.jpg',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/Hero%20section.jpg',
+        caption: 'Hero section with donation focus and clear call-to-action',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20donation%20options.jpg',
+        caption: 'Donation flow with multiple payment gateways',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20payment%20methods.jpg',
+        caption: 'Payment methods including card wallets and local options',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20form%20registeration%20students.jpg',
+        caption: 'Student registration form with IBAN payments',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20registeration%20students.jpg',
+        caption: 'Education program enrollment and scheduling',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20registeration%20students%202.jpg',
+        caption: 'Registration workflow details and confirmations',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20services.jpg',
+        caption: 'Services section managed through the admin dashboard',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/section%20donation%20details.jpg',
+        caption: 'Donation details and summary view',
+      },
+      {
+        type: 'image',
+        url: '/assets/ihssan-dmk/ihssan%20dashboard%20login.png',
+        caption: 'Admin dashboard secure login',
+      },
+    ],
+    client: 'Ihssan Mosque DMK',
+    date: '2024',
+    technologies: [
+      'Angular',
+      'HTML',
+      'SCSS',
+      'TypeScript',
+      'Laravel',
+      'PHP',
+      'MySQL',
+      'REST APIs',
+      'IONOS (Germany)',
+    ],
+    featureSections: [
+      {
+        title: 'Donor Experience & Platform Capabilities',
+        items: [
+          'Donation system: direct or on‑behalf giving',
+          'Multiple payment gateways: PayPal, Google Pay, Apple Pay, Visa/MasterCard, Sofort, Klarna',
+          'Automated email confirmations for successful donations',
+          'Multilingual support (AR, DE) with dynamic API content',
+          'Educational program registration with day selection and IBAN payments',
+          'Real‑time statistics and total funds tracking',
+          'Quranic verses slider to enhance engagement',
+          'About page with news and updates (image, title, description)',
+          'Fully responsive UI for mobile, web, laptops, and flat screens',
+          'SEO optimization with Google Ads integration and visitor analytics',
+        ],
+      },
+      {
+        title: 'Engineering Leadership & Delivery Impact',
+        items: [
+          'Admin dashboard: login/logout, profile update, password change, and logo management',
+          'CRUD management for sliders, services, donations, and About‑Us content',
+          'End‑to‑end REST API design and MySQL data modeling',
+          'Secure authorization layer for admin access',
+          'Payment gateway integration and validation flows',
+          'Performance enhancements: lazy loading, skeleton image loaders, SEO tuning',
+          'Deployment of frontend, backend, and database on IONOS Germany servers',
+        ],
+      },
+    ],
+  },
   'pro-decor': {
     id: 'pro-decor',
     title: 'Pro Decor – VIP Dynamic Landing Page',
