@@ -27,6 +27,24 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      id: 'smart-race-application',
+      title: 'Smart Race Application – Camel Race Association',
+      description:
+        'Enterprise mobile and management platform for UAE camel racing with secure workflows, payments, and real-time communications.',
+      image: '/assets/CRA/Cover%20Image.jpg',
+      tags: [
+        'Flutter',
+        'ASP.NET Core',
+        'SQL Server',
+        'Payments',
+        'Government',
+        'Mobile',
+      ],
+      client: 'UAE Camel Race Association',
+      year: '2024',
+      featured: true,
+    },
+    {
       id: 'restuo',
       title: 'Restuo – Smart Restaurant SaaS Platform',
       description:

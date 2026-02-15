@@ -46,6 +46,120 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  'smart-race-application': {
+    id: 'smart-race-application',
+    title: 'Smart Race Application – Camel Race Association',
+    description:
+      'Smart Race Application is an enterprise-grade mobile and internal management platform built for the UAE Camel Race Association. It digitizes the full camel racing lifecycle—from registration and payments to approvals, race participation, and reporting—while enabling secure transactions and real-time communication across all roles.',
+    coverImage: '/assets/CRA/Cover%20Image.jpg',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/CRA/Cover%20Image.jpg',
+        caption: 'Enterprise overview and digital ecosystem entry point',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/login.jpg',
+        caption: 'Secure login and role-based access entry',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/First%20Page.jpg',
+        caption: 'Participant home with quick actions and stats',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/sidebar.jpg',
+        caption: 'Navigation and multi-role access panels',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/sidebar%203.jpg',
+        caption: 'Administration and governance shortcuts',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/requests.jpg',
+        caption: 'Service requests with approval workflow',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/information%20board.jpg',
+        caption: 'Events, races, rounds, and prize visibility',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/notification.jpg',
+        caption: 'Real-time notifications and alerts',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/Receipts.jpg',
+        caption: 'Receipts and payment history',
+      },
+      {
+        type: 'image',
+        url: '/assets/CRA/reset%20password.jpg',
+        caption: 'Secure account recovery flow',
+      },
+    ],
+    client: 'UAE Camel Race Association',
+    date: '2024',
+    technologies: [
+      'Flutter',
+      'ASP.NET Core',
+      'C#',
+      'SQL Server (SSMS)',
+      'REST APIs',
+      'PayTabs',
+      'Firebase Push Notifications',
+      'SMS Gateway',
+      'SMTP Email',
+      'Windows Server',
+      'IIS',
+    ],
+    featureSections: [
+      {
+        title: 'Platform Capabilities',
+        items: [
+          'Camel management: registration, status, transfers, microchip merge, and identity updates',
+          'Events & races: rounds, prizes, visibility, archives, and participation history',
+          'Role-based access: participant, trainer, sheikh, and internal administration',
+          'Secure payments: online payments and bank transfer attachments',
+          'Receipts and reports with share options across social media',
+          'Service ratings and feedback for continuous improvement',
+        ],
+      },
+      {
+        title: 'Security, Approvals & Workflow',
+        items: [
+          'OTP verification for sensitive actions and ownership transfer',
+          'Approval lifecycle: request → payment → review → approval/rejection',
+          'Payment retries, status synchronization, and receipt delivery',
+          'Multi-account linking with controlled permissions',
+        ],
+      },
+      {
+        title: 'Engineering Impact & Delivery',
+        items: [
+          'Enterprise messaging service for email, SMS, and push notifications with retry logic',
+          'API-driven architecture supporting mobile and internal systems',
+          'Staging + production environments with load-balancing readiness',
+          'Operational analytics: race, camel, financial, and service reports',
+        ],
+      },
+      {
+        title: 'Business Value',
+        items: [
+          'Reduced manual paperwork and faster approvals',
+          'Higher transparency for participants and administrators',
+          'Secure financial workflows with traceable history',
+          'Scalable foundation for federation-wide growth',
+        ],
+      },
+    ],
+  },
   restuo: {
     id: 'restuo',
     title: 'Restuo – Smart Restaurant SaaS Platform',
