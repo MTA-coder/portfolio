@@ -27,6 +27,17 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      id: 'restuo',
+      title: 'Restuo – Smart Restaurant SaaS Platform',
+      description:
+        'Cloud-based restaurant operating system covering menu, orders, kitchen, cashier, delivery, and analytics with multi-channel payments.',
+      image: '/assets/Restu/Cover%20Hero%20Section.png',
+      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'Payments', 'SaaS', 'POS'],
+      client: 'Restuo',
+      year: '2024',
+      featured: true,
+    },
+    {
       id: 'nova-tech',
       title: 'We Nova-Tech – Dynamic Company Platform',
       description:

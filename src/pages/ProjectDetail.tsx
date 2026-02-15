@@ -46,6 +46,173 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  restuo: {
+    id: 'restuo',
+    title: 'Restuo – Smart Restaurant SaaS Platform',
+    description:
+      'Restuo is a cloud-based SaaS ecosystem that digitizes restaurant operations end-to-end—from menu and orders to kitchen workflow, cashier, delivery, analytics, and customer loyalty. It is built for Germany’s compliance needs with configurable VAT rules, structured reporting, and multi-channel ordering experiences.',
+    coverImage: '/assets/Restu/Cover%20Hero%20Section.png',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/Restu/Cover%20Hero%20Section.png',
+        caption: 'Restaurant landing experience and conversion-focused layout',
+      },
+      {
+        type: 'image',
+        url: '/assets/Restu/Restaurant%20About%20us.jpg',
+        caption: 'Brand story and restaurant information section',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Order%20Page.mp4',
+        thumbnail: '/assets/Restu/Restaurant%20Page.jpg',
+        caption: 'Ordering flow with status tracking and tax calculation',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Cooker%20System.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-33.jpg',
+        caption: 'Smart cooker system with chef assignment logic',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Cashir%20Screen.mp4',
+        thumbnail: '/assets/Restu/Invoice%20Print.jpg',
+        caption: 'Cashier workflow with POS operations',
+      },
+      {
+        type: 'image',
+        url: '/assets/Restu/Invoice%20Print.jpg',
+        caption: 'Invoice generation and print-ready output',
+      },
+      {
+        type: 'image',
+        url: '/assets/Restu/Invoice%20Print%20Cachir.jpg',
+        caption: 'Cashier invoice print and customer receipt flow',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Login%20&%20Category%20Screen.mp4',
+        thumbnail: '/assets/Restu/photo_2022-11-02_19-46-07.jpg',
+        caption: 'Login and category navigation with role-based access',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Meal%20Page.mp4',
+        thumbnail: '/assets/Restu/photo_2022-11-02_19-45-34.jpg',
+        caption: 'Meal details, images, and customization options',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Ingredient%20Multiple%20Categories.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-35.jpg',
+        caption: 'Ingredient management and multi-category tagging',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Discount%20Form%20Wizard.mp4',
+        thumbnail: '/assets/Restu/photo_2023-03-13_02-37-16.jpg',
+        caption: 'Discount and offer configuration wizard',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Coupon%20Page.mp4',
+        thumbnail: '/assets/Restu/restuarnt%20intresets.jpg',
+        caption: 'Coupon creation and VIP targeting',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Offer%20Page.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-34.jpg',
+        caption: 'Offer management with meal-based selections',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Offer%20Animation.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-33.jpg',
+        caption: 'Promotion animations and engagement elements',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Meal%20Reviews.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-35.jpg',
+        caption: 'Ratings and review system with star filtering',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Profile%20Page.mp4',
+        thumbnail: '/assets/Restu/restu%20authentication%20mobile.jpg',
+        caption: 'Customer profile and account management',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/Employee.mp4',
+        thumbnail: '/assets/Restu/photo_2022-12-06_14-43-34.jpg',
+        caption: 'Employee roles and permissions management',
+      },
+      {
+        type: 'video',
+        url: '/assets/Restu/restu%20website%20big%20screen%20view.mp4',
+        thumbnail: '/assets/Restu/Restaurant%20Page.jpg',
+        caption: 'Large-screen restaurant display mode',
+      },
+    ],
+    client: 'Restuo',
+    date: '2024',
+    technologies: [
+      'Angular',
+      'HTML5',
+      'SCSS',
+      'TypeScript',
+      'Laravel',
+      'PHP',
+      'MySQL',
+      'REST APIs',
+      'Linux',
+    ],
+    featureSections: [
+      {
+        title: 'Application Suite (12 Modules)',
+        items: [
+          'Menu & Catalog: products, categories, meal details, images, publish/unpublish',
+          'Ingredient Customization: add‑ons, spice levels, preparation time rules',
+          'Discounts & Promotions: coupons, VIP coupons, gift cards, offer types',
+          'Ordering Channels: indoor, QR table, outdoor web/app, takeaway, delivery',
+          'Payments: PayPal, Stripe, POS, cash, refunds, pay‑from‑table',
+          'Smart Cooker: CBR-based meal assignment and multi‑chef synchronization',
+          'Cashier & Invoice: POS orders, printing, email invoices, refunds',
+          'Waiting Screen: preparing vs ready orders in real time',
+          'Admin Dashboard: products, services, offers, orders, settings',
+          'Restaurant Info: branding, hours, maps, social links, terms upload',
+          'Customer Experience: ratings, feedback, VIP and loyalty segmentation',
+          'Reporting & Accounting: VAT rules, Excel/PDF exports, filters',
+        ],
+      },
+      {
+        title: 'Operational Capabilities',
+        items: [
+          'Real-time order tracking with tax calculation per order',
+          'Role-based access for dashboard, cashier, kitchen, and cooker screens',
+          'Real-time Pusher updates for cooker system to deliver meals on time',
+          'QR menu flow: scan → browse → order → pay at table',
+          'Smart filtering for VIP targeting based on spend, time, and orders',
+          'Order analytics by source (indoor, outdoor, app, delivery)',
+          'Germany-ready VAT configuration and accountant-ready exports',
+        ],
+      },
+      {
+        title: 'Engineering Impact',
+        items: [
+          'Unified ecosystem connecting ordering, kitchen logic, cashier, and analytics',
+          'Case-based reasoning workflow to prevent meal quality loss',
+          'API-first architecture with scalable SaaS-ready structure',
+          'Clean separation of modules for multi-restaurant expansion',
+          'Secure authentication and validation across customer and admin flows',
+        ],
+      },
+    ],
+  },
   'nova-tech': {
     id: 'nova-tech',
     title: 'We Nova-Tech – Dynamic Company Platform & Smart Landing Ecosystem',
@@ -1042,6 +1209,15 @@ const ProjectDetail = () => {
                 <video
                   src={mediaItems[lightboxIndex].url}
                   controls
+                  muted
+                  playsInline
+                  onVolumeChange={(event) => {
+                    const videoElement = event.currentTarget
+                    if (!videoElement.muted || videoElement.volume !== 0) {
+                      videoElement.muted = true
+                      videoElement.volume = 0
+                    }
+                  }}
                   className="w-full max-h-[75vh] rounded-lg bg-black"
                 />
               </div>
