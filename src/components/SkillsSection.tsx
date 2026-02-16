@@ -309,7 +309,7 @@ const SkillsSection = () => {
           </motion.div>
         </div>
 
-        <div className="mt-16">
+        {/* <div className="mt-16">
           <motion.div
             className="text-center mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -327,7 +327,7 @@ const SkillsSection = () => {
               see them react!
             </p>
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </LazyLoadSection>
   )

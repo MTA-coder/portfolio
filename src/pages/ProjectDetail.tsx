@@ -46,6 +46,208 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  'yesser-recruitment': {
+    id: 'yesser-recruitment',
+    title: 'Yesser – Recruitment Agency ERP System',
+    description:
+      'Yesser is a comprehensive enterprise ERP system purpose-built for recruitment agencies in Saudi Arabia. It manages the complete recruitment lifecycle—from client onboarding and visa processing to worker contracts, sponsorship transfers (Kafala), housing, waivers, refund management, and full financial operations. The platform supports bilingual Arabic/English operations with full RTL layout, integrates with Musaned (Saudi government recruitment platform), and delivers real-time analytics dashboards with advanced data grid components for every business domain.',
+    coverImage: '/assets/Yesser/Yesser%20Logo.png',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/Yesser/Statistcs%201.png',
+        caption:
+          'Recruitment dashboard with analytics charts and contract statistics',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Statistcs%202.png',
+        caption:
+          'Worker statistics, waiver trends, and rent analytics overview',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Statistcs%203.png',
+        caption: 'Customer distribution charts and refund statistics',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Statistcs%204.png',
+        caption: 'Surety transfer analytics and complaints tracking dashboard',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Login%20Screen.png',
+        caption:
+          'Bilingual login with secure authentication and password recovery',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Clients%20Screens.png',
+        caption: 'Customer management table with advanced AG Grid filtration',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Client%20Form.png',
+        caption:
+          'Comprehensive customer form with personal, passport, and address data',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Client%20Details.png',
+        caption:
+          'Customer details with contracts, identity info, and financial status',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Worker%20Screen.png',
+        caption:
+          'Worker management with CV linking, availability, and status tracking',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Worker%20Form.png',
+        caption:
+          'Worker form with personal data, passport, skills, and experience sections',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Worker%20Details.png',
+        caption:
+          'Worker detail view with education, insurance, and relative information',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Rents%20Screen.png',
+        caption:
+          'Rental contracts management with procedures and financial details',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Rent%20Form.png',
+        caption:
+          'Rent contract creation with period, pricing, and worker assignment',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Housing%20Screen.png',
+        caption: 'Worker housing management and accommodation tracking',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Housing%20Form.png',
+        caption: 'Housing assignment form with capacity and worker allocation',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Financial%20Receipts%20Screen.png',
+        caption:
+          'Financial receipts table with payment destinations and amounts',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Receipts%20Screen.png',
+        caption: 'Receipts management with sales invoices and tax breakdown',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/Record%20Options.png',
+        caption: 'Record context menu with print, export, and action options',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/System%20Users%20Screen.png',
+        caption: 'System users management with role-based access control',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/User%20Details%20Roles.png',
+        caption:
+          'User details with granular role permissions and module access',
+      },
+      {
+        type: 'image',
+        url: '/assets/Yesser/User%20Notification.png',
+        caption:
+          'Real-time Firebase notification center with section filtering',
+      },
+    ],
+    client: 'Yesser Recruitment',
+    date: '2023',
+    technologies: [
+      'Angular',
+      'TypeScript',
+      'SCSS',
+      'AG Grid',
+      'NgRx Store',
+      'Angular Material',
+      'RxJS',
+      'NgxTranslate (AR/EN)',
+      'ASP.NET Core',
+      'C#',
+      'Entity Framework',
+      'SQL Server',
+      'Firebase Push Notifications',
+      'Linux Server',
+      'CKEditor',
+      'Chart.js',
+    ],
+    featureSections: [
+      {
+        title: 'Recruitment & Contract Management',
+        items: [
+          'Full recruitment contract lifecycle: create, update, link procedures, and track warranty periods',
+          'Musaned integration: contract numbers, request types, and government fee tracking',
+          'Contract procedures with automated SMS and email notifications on status changes',
+          'Resume/CV linking: match workers to contracts by experience, religion, country, and external office',
+          'Warranty tracking: expiration alerts, trial periods, and contract extension management',
+          'Stepper-based contract forms: customer identification → contract details → external office → financials',
+        ],
+      },
+      {
+        title: 'Client, Worker & Operations Management',
+        items: [
+          'Complete customer management: personal data, passport, identity, national address, and work info',
+          'Customer types: individuals and businesses with VIP classification and blocking capabilities',
+          'Worker management: CV uploads, personal photos, visa/border numbers, residence, passport, and skills',
+          'Sponsorship transfer (Kafala): old/new sponsor tracking, authorization status, and financial amounts',
+          'Waiver requests: worker-for-waiver and waiver-for-worker with specifications and conditions',
+          'Worker rental: contracts, period management, procedures, and financial side panels',
+          'Housing/accommodation: worker housing assignment, capacity management, and tracking',
+          'Refund management: return worker during contract period with procedure logging',
+          'Electronic authorization: delegations with office, number, and Musaned date tracking',
+        ],
+      },
+      {
+        title: 'Financial Management & Analytics',
+        items: [
+          'Sales and purchases: invoice generation, bill tables, amounts with VAT/tax calculation',
+          'Receipts and bills of exchange: payment destinations, document numbering, and side types',
+          'Financial movements: transaction tracking with storage/safe management',
+          'Financial settings: banks, storage, devices, networks, and expense types',
+          'Dashboard analytics: Chart.js-powered charts for recruitment, workers, customers, waivers, rent, refunds, and surety transfers',
+          'Date-filtered statistics: this month, last 30 days, last week, all time, with department filtering',
+          'Print and export: customer contracts, worker contracts, delegation documents, vouchers, and invoices',
+        ],
+      },
+      {
+        title: 'Platform Architecture & Engineering',
+        items: [
+          'Reusable AG Grid template system: shared filter strategy with text, date, range, radio, and select renderers—reducing development time by 30%',
+          'NgRx Store for state management: enhanced code maintainability by 60% and scalability by 40%',
+          'Full RTL/LTR bilingual support: Arabic and English with NgxTranslate and dynamic direction switching',
+          'Role-based access control: granular permissions per module (canView, canAdd, canUpdate, canDelete) with admin overrides',
+          'Modular Angular architecture: 15+ lazy-loaded feature modules for optimal performance',
+          'Dynamic form validation: smart validators for Arabic/English text, numbers, and conditional fields',
+          'Firebase push notifications: real-time alerts with section-based filtering and read tracking',
+          '90% unit test coverage, decreasing bugs by 30%',
+          'Agile delivery methodology with 90% on-time release success rate',
+        ],
+      },
+    ],
+    githubUrl: 'https://github.com/MTA-coder/yesser-recruitment',
+    demoUrl: 'https://8264-58682.el-alt.com/',
+  },
   'smart-race-application': {
     id: 'smart-race-application',
     title: 'Smart Race Application – Camel Race Association',

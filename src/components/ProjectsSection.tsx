@@ -22,6 +22,17 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
+      id: 'yesser-recruitment',
+      title: 'Yesser – Recruitment Agency ERP System',
+      description:
+        'Full-lifecycle recruitment ERP with contracts, workers, housing, financial management, and Saudi compliance.',
+      image: '/assets/Yesser/Yesser%20Logo.png',
+      tags: ['Angular', 'ASP.NET Core', 'AG Grid', 'NgRx', 'Firebase', 'ERP'],
+      githubUrl: 'https://github.com/MTA-coder/yesser-recruitment',
+      demoUrl: 'https://8264-58682.el-alt.com/',
+      featured: true,
+    },
+    {
       id: 'smart-race-application',
       title: 'Smart Race Application – Camel Race Association',
       description:

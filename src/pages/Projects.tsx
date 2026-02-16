@@ -27,6 +27,19 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      id: 'yesser-recruitment',
+      title: 'Yesser – Recruitment Agency ERP System',
+      description:
+        'Enterprise ERP platform for recruitment agencies managing the full lifecycle—contracts, clients, workers, sponsorship transfers, housing, financial operations, and compliance with Saudi labor systems.',
+      image: '/assets/Yesser/Yesser%20Logo.png',
+      tags: ['Angular', 'ASP.NET Core', 'AG Grid', 'NgRx', 'Firebase', 'ERP'],
+      client: 'Yesser Recruitment',
+      year: '2023',
+      githubUrl: 'https://github.com/MTA-coder/yesser-recruitment',
+      demoUrl: 'https://8264-58682.el-alt.com/',
+      featured: true,
+    },
+    {
       id: 'smart-race-application',
       title: 'Smart Race Application – Camel Race Association',
       description:
@@ -141,17 +154,7 @@ const Projects = () => {
       githubUrl: '#',
       demoUrl: '#',
     },
-    {
-      id: 'erp',
-      title: 'Employee Management ERP',
-      description:
-        'ERP system for managing employee, client, and worker information with financial account tracking.',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
-      tags: ['Angular', 'Ngrx', 'Ag-Grid', 'Unit Testing'],
-      client: 'YESSER Recruitment',
-      year: '2023',
-      demoUrl: '#',
-    },
+
     {
       id: 'elearning',
       title: 'E-Learning Platform',
@@ -205,6 +208,7 @@ const Projects = () => {
     'Laravel',
     'PHP',
     'SQL Server',
+    'AG Grid',
     'AI Integration',
   ]
 
