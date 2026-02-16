@@ -33,6 +33,12 @@ const BlogSection = () => {
               aria-label={`Read blog post: ${post.title}`}
               className={cn('blog-card group', 'animate-fade-in')}
               style={{ animationDelay: `${index * 0.2}s` }}
+              onClick={(e) => {
+                if (post.externalUrl) {
+                  e.preventDefault()
+                  window.open(post.externalUrl, '_blank', 'noopener,noreferrer')
+                }
+              }}
             >
               <article className="h-full flex flex-col">
                 {/* Image */}

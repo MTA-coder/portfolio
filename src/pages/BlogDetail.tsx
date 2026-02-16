@@ -30,6 +30,13 @@ const BlogDetail = () => {
     const currentPost = blogPosts.find((p) => p.slug === slug)
 
     if (currentPost) {
+      // Redirect to external URL if the post is hosted externally
+      if (currentPost.externalUrl) {
+        window.open(currentPost.externalUrl, '_blank', 'noopener,noreferrer')
+        navigate('/blog')
+        return
+      }
+
       setPost(currentPost)
 
       // Set related posts (same category, but not the current post)

@@ -155,6 +155,16 @@ const Blog = () => {
                     <Link
                       to={`/blog/${post.slug}`}
                       className="blog-card h-full flex flex-col"
+                      onClick={(e) => {
+                        if (post.externalUrl) {
+                          e.preventDefault()
+                          window.open(
+                            post.externalUrl,
+                            '_blank',
+                            'noopener,noreferrer',
+                          )
+                        }
+                      }}
                     >
                       <article className="h-full flex flex-col">
                         {/* Image */}
