@@ -102,7 +102,7 @@ const App = () => {
               href={
                 typeof window !== 'undefined'
                   ? window.location.href
-                  : 'https://yourwebsite.com/'
+                  : 'https://mta-coder.github.io/portfolio//'
               }
             />
             <meta

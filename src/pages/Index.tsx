@@ -140,7 +140,10 @@ const Index = () => {
           <div className="flex flex-col min-h-screen relative overflow-hidden">
             <Helmet>
               <title>Mohammed Tawfeq Amiri | Portfolio</title>
-              <link rel="canonical" href="https://yourwebsite.com/" />
+              <link
+                rel="canonical"
+                href="https://mta-coder.github.io/portfolio//"
+              />
               <meta
                 name="robots"
                 content="index,follow,max-image-preview:large"
@@ -179,7 +182,7 @@ const Index = () => {
                     '@type': 'Person',
                     name: 'Mohammed Tawfeq Amiri',
                     jobTitle: 'Full Stack Engineer',
-                    url: 'https://yourwebsite.com/',
+                    url: 'https://mta-coder.github.io/portfolio//',
                     sameAs: [
                       'https://www.linkedin.com/in/mohammed-tawfeq-amiri',
                       'https://github.com/MTA-coder',
@@ -189,10 +192,11 @@ const Index = () => {
                     '@context': 'https://schema.org',
                     '@type': 'WebSite',
                     name: 'Mohammed Tawfeq Amiri Portfolio',
-                    url: 'https://yourwebsite.com/',
+                    url: 'https://mta-coder.github.io/portfolio//',
                     potentialAction: {
                       '@type': 'SearchAction',
-                      target: 'https://yourwebsite.com/?q={search_term_string}',
+                      target:
+                        'https://mta-coder.github.io/portfolio//?q={search_term_string}',
                       'query-input': 'required name=search_term_string',
                     },
                   },

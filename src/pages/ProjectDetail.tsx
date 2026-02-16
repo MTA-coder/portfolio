@@ -1338,7 +1338,7 @@ const ProjectDetail = () => {
       <Helmet>
         <link
           rel="canonical"
-          href={`https://yourwebsite.com/projects/${project.id}`}
+          href={`https://mta-coder.github.io/portfolio//projects/${project.id}`}
         />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <title>{project.title} | Project Details</title>
@@ -1375,13 +1375,13 @@ const ProjectDetail = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Projects',
-                item: 'https://yourwebsite.com/projects',
+                item: 'https://mta-coder.github.io/portfolio//projects',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: project.title,
-                item: `https://yourwebsite.com/projects/${project.id}`,
+                item: `https://mta-coder.github.io/portfolio//projects/${project.id}`,
               },
             ],
           })}
@@ -1500,6 +1500,7 @@ const ProjectDetail = () => {
                               <button
                                 type="button"
                                 onClick={() => openLightbox(index)}
+                                aria-label="View image in lightbox"
                                 className="w-full text-left"
                               >
                                 <OptimizedImage

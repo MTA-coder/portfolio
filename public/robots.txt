@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 Disallow: /__analytics
 
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://mta-coder.github.io/portfolio//sitemap.xml

@@ -1,0 +1,35 @@
+{
+  "name": "MTA Developer Portfolio",
+  "short_name": "MTA Dev",
+  "description": "Full Stack Developer specializing in Angular, .NET Core, and Laravel. Enterprise projects and modern web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b011e",
+  "theme_color": "#0b011e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["portfolio", "technology", "development"]
+}

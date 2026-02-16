@@ -32,7 +32,15 @@ const Projects = () => {
       description:
         'Full-featured ERP automating end-to-end operations—customers, employees, production, orders, shipping, invoicing, and financials with smart filtering, CSV/PDF exports, and real-time analytics.',
       image: '/assets/lamsat/Lamsat%20Logo.jpg',
-      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'Angular Material', 'ApexCharts', 'ERP'],
+      tags: [
+        'Angular',
+        'Laravel',
+        'PHP',
+        'MySQL',
+        'Angular Material',
+        'ApexCharts',
+        'ERP',
+      ],
       client: 'Lamasat',
       year: '2021',
       featured: true,
@@ -233,7 +241,10 @@ const Projects = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Projects | Portfolio</title>
-        <link rel="canonical" href="https://yourwebsite.com/projects" />
+        <link
+          rel="canonical"
+          href="https://mta-coder.github.io/portfolio//projects"
+        />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta
           name="description"
@@ -249,7 +260,7 @@ const Projects = () => {
               itemListElement: filteredProjects.map((p, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
-                url: `https://yourwebsite.com/projects/${p.id}`,
+                url: `https://mta-coder.github.io/portfolio//projects/${p.id}`,
                 name: p.title,
                 description: p.description,
               })),
@@ -262,13 +273,13 @@ const Projects = () => {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Home',
-                  item: 'https://yourwebsite.com/',
+                  item: 'https://mta-coder.github.io/portfolio//',
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Projects',
-                  item: 'https://yourwebsite.com/projects',
+                  item: 'https://mta-coder.github.io/portfolio//projects',
                 },
               ],
             },

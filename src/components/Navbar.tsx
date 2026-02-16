@@ -126,6 +126,8 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/mohammed-tawfeq-amiri"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
               className="text-muted-foreground hover:text-tech-purple transition-colors"
             >
               <Linkedin size={20} />
@@ -134,12 +136,16 @@ const Navbar = () => {
               href="https://github.com/MTA-coder"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
               className="text-muted-foreground hover:text-tech-purple transition-colors"
             >
               <Github size={20} />
             </a>
             <a
               href="mailto:mohammed.tawfeq.amiri@gmail.com"
+              aria-label="Email"
+              title="Email"
               className="text-muted-foreground hover:text-tech-purple transition-colors"
             >
               <Mail size={20} />
@@ -148,6 +154,8 @@ const Navbar = () => {
               href="https://wa.me/971505941856"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              title="WhatsApp"
               className="text-muted-foreground hover:text-tech-purple transition-colors"
             >
               <MessageCircle size={20} />
@@ -251,6 +259,8 @@ const Navbar = () => {
                   href="https://www.linkedin.com/in/mohammed-tawfeq-amiri"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
                   className="p-3 rounded-full bg-tech-purple/10 text-tech-purple"
                 >
                   <Linkedin size={20} />
@@ -259,12 +269,16 @@ const Navbar = () => {
                   href="https://github.com/MTA-coder"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  title="GitHub"
                   className="p-3 rounded-full bg-tech-purple/10 text-tech-purple"
                 >
                   <Github size={20} />
                 </a>
                 <a
                   href="mailto:mohammed.tawfeq.amiri@gmail.com"
+                  aria-label="Email"
+                  title="Email"
                   className="p-3 rounded-full bg-tech-purple/10 text-tech-purple"
                 >
                   <Mail size={20} />
@@ -273,6 +287,8 @@ const Navbar = () => {
                   href="https://wa.me/971505941856"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  title="WhatsApp"
                   className="p-3 rounded-full bg-tech-purple/10 text-tech-purple"
                 >
                   <MessageCircle size={20} />
