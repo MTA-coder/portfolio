@@ -216,13 +216,20 @@ const AboutSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-block"
               >
-                <Button
-                  size="lg"
-                  className="bg-tech-purple hover:bg-tech-purple/90 text-white flex items-center gap-2"
+                <a
+                  href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Download size={18} />
-                  Download Resume
-                </Button>
+                  <Button
+                    size="lg"
+                    className="bg-tech-purple hover:bg-tech-purple/90 text-white flex items-center gap-2"
+                  >
+                    <Download size={18} />
+                    Download Resume
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
           </motion.div>

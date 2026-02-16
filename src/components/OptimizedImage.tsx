@@ -123,7 +123,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       alt={alt}
       loading={priority ? 'eager' : 'lazy'}
       decoding="async"
-      fetchPriority={priority ? 'high' : undefined}
+      // @ts-ignore – valid HTML attribute, React warns on camelCase
+      fetchpriority={priority ? 'high' : undefined}
       className={`${className} ${
         withSkeleton ? 'transition-opacity duration-300' : ''
       } ${

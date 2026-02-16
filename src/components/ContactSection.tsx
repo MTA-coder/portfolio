@@ -386,10 +386,18 @@ const ContactSection = () => {
             </div>
 
             {/* Resume download */}
-            <Button className="w-full bg-tech-purple hover:bg-tech-purple/90 text-white h-12 flex items-center justify-center gap-2">
-              <Download size={18} />
-              Download My Full Resume
-            </Button>
+            <a
+              href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Button className="w-full bg-tech-purple hover:bg-tech-purple/90 text-white h-12 flex items-center justify-center gap-2">
+                <Download size={18} />
+                Download My Full Resume
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>

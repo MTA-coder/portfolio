@@ -152,14 +152,21 @@ const Navbar = () => {
             >
               <MessageCircle size={20} />
             </a>
-            <Button
-              size="sm"
-              variant="default"
-              className="flex items-center gap-2 bg-tech-purple text-white hover:bg-tech-purple/90"
+            <a
+              href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Download size={16} />
-              Resume
-            </Button>
+              <Button
+                size="sm"
+                variant="default"
+                className="flex items-center gap-2 bg-tech-purple text-white hover:bg-tech-purple/90"
+              >
+                <Download size={16} />
+                Resume
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Navigation - Theme Toggle and Menu Button */}
@@ -279,9 +286,17 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.3 }}
               >
-                <Button className="bg-tech-purple hover:bg-tech-purple/90 text-white flex items-center gap-2 px-6 py-2.5 text-base">
-                  <Download size={18} /> Resume
-                </Button>
+                <a
+                  href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  <Button className="bg-tech-purple hover:bg-tech-purple/90 text-white flex items-center gap-2 px-6 py-2.5 text-base w-full">
+                    <Download size={18} /> Resume
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
           </motion.div>

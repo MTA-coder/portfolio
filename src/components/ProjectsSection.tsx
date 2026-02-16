@@ -22,6 +22,15 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
+      id: 'lamasat-erp',
+      title: 'Lamasat – Automated Business ERP System',
+      description:
+        'End-to-end ERP with customer, employee, production, order, shipping, invoicing, and financial modules — all with smart filters, exports, and real-time analytics.',
+      image: '/assets/lamsat/Lamsat%20Logo.jpg',
+      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'Angular Material', 'ApexCharts', 'ERP'],
+      featured: true,
+    },
+    {
       id: 'yesser-recruitment',
       title: 'Yesser – Recruitment Agency ERP System',
       description:

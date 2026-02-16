@@ -46,6 +46,265 @@ interface ProjectData {
 }
 
 const projects: Record<string, ProjectData> = {
+  'lamasat-erp': {
+    id: 'lamasat-erp',
+    title: 'Lamasat – Automated Business ERP System',
+    description:
+      'Lamasat is a full-featured ERP system that automates end-to-end business operations—from customer management and employee scheduling to production tracking, order lifecycle, shipping, invoicing, and financial fund management. Built with Angular 16 and Laravel 9, the platform features role-based access control, real-time ApexCharts dashboards, multi-currency support (USD/local), and smart filtering across every module with CSV and PDF report exports. The UI was custom-designed in-house, delivering a cohesive brand experience across 35+ screens.',
+    coverImage: '/assets/lamsat/Lamsat%20Logo.jpg',
+    media: [
+      {
+        type: 'image',
+        url: '/assets/lamsat/Login%20Screen.png',
+        caption: 'Secure login screen with branded visuals',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Customers.png',
+        caption: 'Customer listing with smart search and filtering',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employees.png',
+        caption: 'Employee management with department assignments',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employee%20Form.png',
+        caption: 'Employee creation form with multi-step wizard',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employee%20Form%202.png',
+        caption: 'Employee details: personal and work information',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employee%20Form%20Step%202.png',
+        caption: 'Employee form step 2: salary and department settings',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employee%20Salary%20System.png',
+        caption: 'Salary management with extras and deductions',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Employee%20Scheduled%20hours.png',
+        caption: 'Employee scheduling with daily work hours tracking',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Product%20Screen.png',
+        caption: 'Product catalog with category-based navigation',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Product%20Form%20Step%201.png',
+        caption: 'Product creation form with stage definitions',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Product%20Form%202.png',
+        caption: 'Product configuration: pricing and production stages',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Extra%20Stage%20Screen.png',
+        caption: 'Extra production stages configuration screen',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Exra%20Stage%20Form.png',
+        caption: 'Extra stage form with settings and assignments',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Extra%20Stages%20Settings.png',
+        caption: 'Extra stages settings and workflow configuration',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Screen.png',
+        caption: 'Order management with status tracking and filters',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Screen%20States.png',
+        caption: 'Order state transitions and lifecycle visualization',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Form%20Step%200.png',
+        caption: 'Order form step 1: customer and product selection',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Form%20Step%201.png',
+        caption: 'Order form step 2: quantity and specifications',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Form%20Step%202.png',
+        caption: 'Order form step 3: pricing and payment terms',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Form%20Step%203.png',
+        caption: 'Order form step 4: review and confirmation',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Details.png',
+        caption: 'Order detail view with full order breakdown',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Details%20Control%20Stages.png',
+        caption: 'Stage-by-stage order progress control panel',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Detail%20Extra%20Stage.png',
+        caption: 'Extra stage tracking within order details',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Group%20Screen.png',
+        caption: 'Group order management and batch operations',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Request%20Screen.png',
+        caption: 'Bulk request listing with smart filters',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Request%20Details.png',
+        caption: 'Request details with linked orders and invoices',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Invoice%20Screen.png',
+        caption: 'Invoice management with payment tracking',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Shipping%20Screen.png',
+        caption: 'Shipment tracking with delivery status',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Shipping%20Orders%20Form.png',
+        caption: 'Shipping order form with logistics details',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Shipping%20Details.png',
+        caption: 'Shipment details with order association',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Archived%20Screen.png',
+        caption: 'Archived orders with historical data access',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Order%20Archived%20Screen%202.png',
+        caption: 'Archive search and filtered report generation',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Financual%20Main%20Funds.png',
+        caption: 'Main fund management and balance tracking',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Financial%20Sub%20Finds.png',
+        caption: 'Sub-fund allocation and expense breakdown',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Financial%20Expense%20Form.png',
+        caption: 'Expense submission form with fund selection',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Financual%20Statistics%20Box.png',
+        caption: 'Financial dashboard with ApexCharts analytics',
+      },
+      {
+        type: 'image',
+        url: '/assets/lamsat/Change%20Stats%20Orders.png',
+        caption: 'Real-time order statistics and status overview',
+      },
+    ],
+    client: 'Lamasat',
+    date: 'Nov 2020 – Jan 2021',
+    technologies: [
+      'Angular 16',
+      'Angular Material',
+      'Bootstrap 5',
+      'Laravel 9',
+      'PHP 8.1',
+      'MySQL',
+      'Laravel Passport',
+      'ApexCharts',
+      'SweetAlert2',
+      'html2canvas',
+      'file-saver',
+      'Font Awesome',
+    ],
+    featureSections: [
+      {
+        title: 'Customer & Supplier Management',
+        items: [
+          'Full customer profiles with balance tracking and payment history',
+          'Supplier registry with contact details and supply chain linkage',
+          'Smart search and filter across customer and supplier records',
+          'CSV and PDF report extraction for customer and supplier data',
+        ],
+      },
+      {
+        title: 'Company & HR Management',
+        items: [
+          'Department and building (branch) organizational structure',
+          'Employee onboarding with multi-step wizard forms',
+          'Automated salary system with extras, deductions, and payroll processing',
+          'Award and recognition tracking per employee',
+          'Daily work scheduling with hour tracking and shift management',
+          'Dollar price settings for multi-currency financial operations',
+          'System-wide statistics dashboard with ApexCharts visualizations',
+        ],
+      },
+      {
+        title: 'Production & Order Lifecycle',
+        items: [
+          'Product catalog with categories and multi-stage production pipeline',
+          'Configurable extra production stages with workflow assignments',
+          'Multi-step order creation wizard (customer → product → pricing → review)',
+          'Real-time order stage tracking with visual progress indicators',
+          'Special order support for custom one-off requests',
+          'Group order management for batch processing',
+          'Shipment creation, tracking, and delivery status management',
+          'Order and group archiving with full historical data access',
+        ],
+      },
+      {
+        title: 'Financial Management & Reporting',
+        items: [
+          'Invoice generation with payment tracking per order and request',
+          'Bulk request management linking multiple orders to single invoices',
+          'Main fund and sub-fund financial management with expense tracking',
+          'Real-time financial analytics dashboard with charts and KPIs',
+          'Smart filtering on every module: orders, invoices, requests, customers, employees',
+          'Export-ready reports in CSV and PDF across all data tables',
+          'Role-based access control with granular permissions per module',
+          'Custom UI/UX design — in-house graphic design for the entire platform',
+        ],
+      },
+    ],
+  },
   'yesser-recruitment': {
     id: 'yesser-recruitment',
     title: 'Yesser – Recruitment Agency ERP System',
@@ -1094,7 +1353,14 @@ const ProjectDetail = () => {
             name: project.title,
             description: project.description,
             codeRepository: project.githubUrl || undefined,
-            dateCreated: new Date(project.date).toISOString(),
+            dateCreated: (() => {
+              try {
+                const d = new Date(project.date)
+                return isNaN(d.getTime()) ? undefined : d.toISOString()
+              } catch {
+                return undefined
+              }
+            })(),
             programmingLanguage: project.technologies[0],
             keywords: project.technologies.join(', '),
             image: project.coverImage,
