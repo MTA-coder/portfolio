@@ -22,11 +22,11 @@ const Footer = () => {
           {/* Logo and info */}
           <div className="text-center md:text-left max-w-md">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center bg-tech-purple rounded-lg">
-                <span className="text-tech-dark-purple font-bold text-lg">
-                  MTA
-                </span>
-              </div>
+              <img
+                src="/android-chrome-512x512.png"
+                alt="MTA Logo"
+                className="w-10 h-10 rounded-lg"
+              />
               <span className="text-xl font-bold tracking-tight text-gradient">
                 Mohammed Tawfeq
               </span>

@@ -78,35 +78,11 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
-            <div className="relative w-12 h-12 flex items-center justify-center bg-tech-purple rounded-lg overflow-hidden">
-              <span className="text-white font-bold text-xl z-10">M</span>
-              {/* Floating bubbles */}
-              <motion.div
-                className="absolute w-2 h-2 bg-white/30 rounded-full"
-                style={{ top: '20%', left: '15%' }}
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.7, 0.3],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute w-1.5 h-1.5 bg-white/40 rounded-full"
-                style={{ top: '70%', right: '20%' }}
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.4, 0.8, 0.4],
-                }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
-              />
-              <motion.div
-                className="absolute w-1 h-1 bg-white/50 rounded-full"
-                style={{ top: '50%', right: '10%' }}
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 0.9, 0.5],
-                }}
-                transition={{ duration: 1.8, repeat: Infinity, delay: 1 }}
+            <div className="relative w-12 h-12 flex items-center justify-center rounded-lg overflow-hidden">
+              <img
+                src="/android-chrome-512x512.png"
+                alt="MTA Logo"
+                className="w-12 h-12 rounded-lg"
               />
             </div>
             <span className="text-2xl font-bold tracking-tight text-gradient">
