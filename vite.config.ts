@@ -6,9 +6,42 @@ import { imagetools } from 'vite-imagetools';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VitePWA } from 'vite-plugin-pwa';
 
+/**
+ * Vite plugin that rewrites bare `/assets/`, `/fonts/`, `/android-chrome-*`,
+ * `/favicon*`, `/apple-touch-*`, `/placeholder*` string-literal references
+ * inside src/ to include the configured `base` path.
+ *
+ * This is needed because Vite only rewrites HTML references automatically —
+ * string literals in JS/TS component code are left as-is.
+ */
+function rewritePublicPaths() {
+  let base = '/';
+  return {
+    name: 'rewrite-public-paths',
+    configResolved(config: { base: string }) {
+      base = config.base;
+    },
+    transform(code: string, id: string) {
+      if (!id.includes('/src/') && !id.includes('\\src\\')) return null;
+      if (!id.endsWith('.ts') && !id.endsWith('.tsx')) return null;
+      if (base === '/') return null; // nothing to rewrite
+
+      const result = code.replace(
+        /(['"`])\/(?=assets\/|fonts\/|android-chrome-|favicon|apple-touch|placeholder|manifest)/g,
+        `$1${base}`
+      );
+
+      if (result !== code) {
+        return { code: result, map: null };
+      }
+      return null;
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: 'mta-digital-storyteller/',
+  base: '/mta-digital-storyteller/',
   server: {
     host: "::",
     port: 8080,
@@ -27,6 +60,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     imagetools(),
+    rewritePublicPaths(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'offline.html'],
@@ -36,15 +70,15 @@ export default defineConfig(({ mode }) => ({
         theme_color: '#0b011e',
         background_color: '#0b011e',
         display: 'standalone',
-        start_url: 'mta-digital-storyteller/',
+        start_url: '/mta-digital-storyteller/',
         icons: [
-          { src: 'mta-digital-storyteller/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'mta-digital-storyteller/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
+          { src: '/mta-digital-storyteller/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/mta-digital-storyteller/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
         // Keep SPA fallback
-        navigateFallback: 'mta-digital-storyteller/index.html',
+        navigateFallback: '/mta-digital-storyteller/index.html',
         // Precache additional critical assets
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
         runtimeCaching: [
@@ -101,9 +135,8 @@ export default defineConfig(({ mode }) => ({
         // (A lightweight runtime plugin approach can be added later if deeper logic required)
       }
     }),
-    mode === 'development' &&
-    componentTagger(),
-    process.env.ANALYZE && visualizer({ filename: 'dist/stats.html', template: 'treemap', gzipSize: true, brotliSize: true })
+    mode === 'development' ? componentTagger() : undefined,
+    process.env.ANALYZE ? visualizer({ filename: 'dist/stats.html', template: 'treemap', gzipSize: true, brotliSize: true }) : undefined,
   ].filter(Boolean),
   resolve: {
     alias: {

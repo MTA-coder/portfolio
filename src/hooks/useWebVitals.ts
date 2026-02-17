@@ -23,6 +23,12 @@ export const useWebVitals = () => {
         const flush = () => {
             if (!queueRef.current.length) return
             const payload = { metrics: queueRef.current, ts: Date.now() }
+            // Only send analytics if a backend endpoint exists (skip on static hosts like GitHub Pages)
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                console.debug('[WebVitals] Skipping beacon on static host', payload)
+                queueRef.current = []
+                return
+            }
             try {
                 navigator.sendBeacon?.('/__analytics', JSON.stringify(payload))
             } catch {
