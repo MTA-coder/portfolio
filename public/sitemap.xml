@@ -2,66 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main pages -->
   <url>
-    <loc>https://mta-coder.github.io/portfolio//</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//blog</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Project detail pages -->
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/lamasat-erp</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/lamasat-erp</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/yesser-recruitment</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/yesser-recruitment</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/smart-race-application</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/smart-race-application</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/restuo</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/restuo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/nova-tech</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/nova-tech</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/issan-mosque-dmk</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/issan-mosque-dmk</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//projects/pro-decor</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/projects/pro-decor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Legal pages -->
   <url>
-    <loc>https://mta-coder.github.io/portfolio//privacy-policy</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://mta-coder.github.io/portfolio//terms</loc>
+    <loc>https://mta-coder.github.io/mta-digital-storyteller/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

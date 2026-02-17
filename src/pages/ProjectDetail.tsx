@@ -1338,7 +1338,7 @@ const ProjectDetail = () => {
       <Helmet>
         <link
           rel="canonical"
-          href={`https://mta-coder.github.io/portfolio//projects/${project.id}`}
+          href={`https://mta-coder.github.io/mta-digital-storyteller/projects/${project.id}`}
         />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <title>{project.title} | Project Details</title>
@@ -1375,13 +1375,14 @@ const ProjectDetail = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Projects',
-                item: 'https://mta-coder.github.io/portfolio//projects',
+                item:
+                  'https://mta-coder.github.io/mta-digital-storyteller/projects',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: project.title,
-                item: `https://mta-coder.github.io/portfolio//projects/${project.id}`,
+                item: `https://mta-coder.github.io/mta-digital-storyteller/projects/${project.id}`,
               },
             ],
           })}

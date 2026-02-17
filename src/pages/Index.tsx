@@ -142,7 +142,7 @@ const Index = () => {
               <title>Mohammed Tawfeq Amiri | Portfolio</title>
               <link
                 rel="canonical"
-                href="https://mta-coder.github.io/portfolio//"
+                href="https://mta-coder.github.io/mta-digital-storyteller/"
               />
               <meta
                 name="robots"
@@ -182,7 +182,7 @@ const Index = () => {
                     '@type': 'Person',
                     name: 'Mohammed Tawfeq Amiri',
                     jobTitle: 'Full Stack Engineer',
-                    url: 'https://mta-coder.github.io/portfolio//',
+                    url: 'https://mta-coder.github.io/mta-digital-storyteller/',
                     sameAs: [
                       'https://www.linkedin.com/in/mohammed-tawfeq-amiri',
                       'https://github.com/MTA-coder',
@@ -192,11 +192,11 @@ const Index = () => {
                     '@context': 'https://schema.org',
                     '@type': 'WebSite',
                     name: 'Mohammed Tawfeq Amiri Portfolio',
-                    url: 'https://mta-coder.github.io/portfolio//',
+                    url: 'https://mta-coder.github.io/mta-digital-storyteller/',
                     potentialAction: {
                       '@type': 'SearchAction',
                       target:
-                        'https://mta-coder.github.io/portfolio//?q={search_term_string}',
+                        'https://mta-coder.github.io/mta-digital-storyteller/?q={search_term_string}',
                       'query-input': 'required name=search_term_string',
                     },
                   },

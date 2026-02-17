@@ -68,7 +68,7 @@ const BlogDetail = () => {
         <Helmet>
           <link
             rel="canonical"
-            href={`https://mta-coder.github.io/portfolio//blog/${post.slug}`}
+            href={`https://mta-coder.github.io/mta-digital-storyteller/blog/${post.slug}`}
           />
           <meta name="robots" content="index,follow,max-image-preview:large" />
           <script type="application/ld+json">
@@ -80,13 +80,14 @@ const BlogDetail = () => {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Blog',
-                  item: 'https://mta-coder.github.io/portfolio//blog',
+                  item:
+                    'https://mta-coder.github.io/mta-digital-storyteller/blog',
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: post.title,
-                  item: `https://mta-coder.github.io/portfolio//blog/${post.slug}`,
+                  item: `https://mta-coder.github.io/mta-digital-storyteller/blog/${post.slug}`,
                 },
               ],
             })}
@@ -259,7 +260,7 @@ const BlogDetail = () => {
         <meta property="og:image" content={post.image} />
         <meta
           property="og:url"
-          content={`https://mta-coder.github.io/portfolio//blog/${post.slug}`}
+          content={`https://mta-coder.github.io/mta-digital-storyteller/blog/${post.slug}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
@@ -276,7 +277,7 @@ const BlogDetail = () => {
             description: post.excerpt,
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://mta-coder.github.io/portfolio//blog/${post.slug}`,
+              '@id': `https://mta-coder.github.io/mta-digital-storyteller/blog/${post.slug}`,
             },
           })}
         </script>

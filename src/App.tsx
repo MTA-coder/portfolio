@@ -102,7 +102,7 @@ const App = () => {
               href={
                 typeof window !== 'undefined'
                   ? window.location.href
-                  : 'https://mta-coder.github.io/portfolio//'
+                  : 'https://mta-coder.github.io/mta-digital-storyteller/'
               }
             />
             <meta
