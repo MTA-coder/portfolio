@@ -115,7 +115,7 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <BrowserRouter>
+            <BrowserRouter basename="/portfolio">
               {settings.enableHover && <OptimizedBubbleCursor />}
               <RouteMetrics />
               <RouteErrorBoundary>
