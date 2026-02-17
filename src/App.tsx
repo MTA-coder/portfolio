@@ -115,7 +115,7 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <BrowserRouter basename="/portfolio">
+            <BrowserRouter basename="mta-digital-storyteller">
               {settings.enableHover && <OptimizedBubbleCursor />}
               <RouteMetrics />
               <RouteErrorBoundary>

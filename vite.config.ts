@@ -8,7 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/portfolio/',
+  base: 'mta-digital-storyteller/',
   server: {
     host: "::",
     port: 8080,
@@ -36,15 +36,15 @@ export default defineConfig(({ mode }) => ({
         theme_color: '#0b011e',
         background_color: '#0b011e',
         display: 'standalone',
-        start_url: '/portfolio/',
+        start_url: 'mta-digital-storyteller/',
         icons: [
-          { src: '/portfolio/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/portfolio/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
+          { src: 'mta-digital-storyteller/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'mta-digital-storyteller/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
         // Keep SPA fallback
-        navigateFallback: '/portfolio/index.html',
+        navigateFallback: 'mta-digital-storyteller/index.html',
         // Precache additional critical assets
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
         runtimeCaching: [
