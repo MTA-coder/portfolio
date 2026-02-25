@@ -10,6 +10,39 @@ interface CountryData {
   capital?: string
 }
 
+/** Returns responsive scaling factors based on container width */
+const getResponsiveConfig = (containerWidth: number) => {
+  const isMobile = containerWidth < 480
+  const isTablet = containerWidth >= 480 && containerWidth < 768
+  const scale = containerWidth / 500 // 500 is the desktop reference size
+
+  return {
+    isMobile,
+    isTablet,
+    scale: Math.min(scale, 1),
+    globeRadius: isMobile ? 2.4 : isTablet ? 2.6 : 2.8,
+    latStep: isMobile ? 20 : 10,
+    lngStep: isMobile ? 20 : 10,
+    latSegments: isMobile ? 32 : 64,
+    latPointInterval: isMobile ? 16 : 8,
+    lngLatStep: isMobile ? 12 : 6,
+    lngPointInterval: isMobile ? 30 : 15,
+    mainLineOpacity: isMobile ? 0.5 : 0.8,
+    subLineOpacity: isMobile ? 0.3 : 0.5,
+    mainGlowOpacity: isMobile ? 0.2 : 0.4,
+    subGlowOpacity: isMobile ? 0.1 : 0.2,
+    connectionPointSkip: isMobile ? 5 : 3,
+    pointSize: isMobile ? 0.015 : 0.02,
+    markerSize: isMobile ? 0.06 : 0.08,
+    markerGlowSize: isMobile ? 0.09 : 0.12,
+    particleCount: isMobile ? 8 : 20,
+    particleSize: isMobile ? 0.01 : 0.015,
+    networkConnections: isMobile ? 8 : 15,
+    cameraZ: isMobile ? 6.5 : 6,
+    markerSegments: isMobile ? 8 : 16,
+  }
+}
+
 const DigitalGlobe = () => {
   const mountRef = useRef<HTMLDivElement>(null)
   const sceneRef = useRef<any>(null)
@@ -120,19 +153,23 @@ const DigitalGlobe = () => {
       }
 
       const size = getSize()
+      const config = getResponsiveConfig(size)
       renderer.setSize(size, size)
+      renderer.setPixelRatio(
+        Math.min(window.devicePixelRatio, config.isMobile ? 1.5 : 2),
+      )
       renderer.setClearColor(0x000000, 0)
       mountRef.current?.appendChild(renderer.domElement)
 
       // Create globe wireframe group
       const globeGroup = new THREE.Group()
-      const globeRadius = 2.8
+      const globeRadius = config.globeRadius
       const connectionPoints: any[] = []
       const countryMarkers: any[] = []
       const dataFlows: any[] = []
 
-      // Enhanced latitude lines with doubled density
-      for (let lat = -80; lat <= 80; lat += 10) {
+      // Enhanced latitude lines - responsive density
+      for (let lat = -80; lat <= 80; lat += config.latStep) {
         const radius = globeRadius
         const y = radius * Math.sin((lat * Math.PI) / 180)
         const circleRadius = radius * Math.cos((lat * Math.PI) / 180)
@@ -140,13 +177,13 @@ const DigitalGlobe = () => {
         const points = []
         const connectionPointsOnLine = []
 
-        for (let i = 0; i <= 64; i++) {
-          const angle = (i / 64) * Math.PI * 2
+        for (let i = 0; i <= config.latSegments; i++) {
+          const angle = (i / config.latSegments) * Math.PI * 2
           const x = circleRadius * Math.cos(angle)
           const z = circleRadius * Math.sin(angle)
           points.push(new THREE.Vector3(x, y, z))
 
-          if (i % 8 === 0) {
+          if (i % config.latPointInterval === 0) {
             connectionPointsOnLine.push(new THREE.Vector3(x, y, z))
           }
         }
@@ -158,8 +195,8 @@ const DigitalGlobe = () => {
         const material = new THREE.LineBasicMaterial({
           color: 0x9b87f5,
           transparent: true,
-          opacity: isMainLine ? 0.8 : 0.5,
-          linewidth: isMainLine ? 3 : 2,
+          opacity: isMainLine ? config.mainLineOpacity : config.subLineOpacity,
+          linewidth: isMainLine ? 2 : 1,
         })
         const line = new THREE.LineLoop(geometry, material)
         globeGroup.add(line)
@@ -167,19 +204,19 @@ const DigitalGlobe = () => {
         const glowMaterial = new THREE.LineBasicMaterial({
           color: 0x9b87f5,
           transparent: true,
-          opacity: isMainLine ? 0.4 : 0.2,
-          linewidth: isMainLine ? 6 : 4,
+          opacity: isMainLine ? config.mainGlowOpacity : config.subGlowOpacity,
+          linewidth: isMainLine ? 3 : 2,
         })
         const glowLine = new THREE.LineLoop(geometry.clone(), glowMaterial)
         globeGroup.add(glowLine)
       }
 
-      // Enhanced longitude lines with doubled density
-      for (let lng = 0; lng < 360; lng += 10) {
+      // Enhanced longitude lines - responsive density
+      for (let lng = 0; lng < 360; lng += config.lngStep) {
         const points = []
         const connectionPointsOnLine = []
 
-        for (let lat = -90; lat <= 90; lat += 6) {
+        for (let lat = -90; lat <= 90; lat += config.lngLatStep) {
           const phi = (90 - lat) * (Math.PI / 180)
           const theta = lng * (Math.PI / 180)
 
@@ -189,7 +226,7 @@ const DigitalGlobe = () => {
 
           points.push(new THREE.Vector3(x, y, z))
 
-          if (lat % 15 === 0) {
+          if (lat % config.lngPointInterval === 0) {
             connectionPointsOnLine.push(new THREE.Vector3(x, y, z))
           }
         }
@@ -201,8 +238,8 @@ const DigitalGlobe = () => {
         const material = new THREE.LineBasicMaterial({
           color: 0x9b87f5,
           transparent: true,
-          opacity: isMainLine ? 0.8 : 0.5,
-          linewidth: isMainLine ? 3 : 2,
+          opacity: isMainLine ? config.mainLineOpacity : config.subLineOpacity,
+          linewidth: isMainLine ? 2 : 1,
         })
         const line = new THREE.Line(geometry, material)
         globeGroup.add(line)
@@ -210,15 +247,15 @@ const DigitalGlobe = () => {
         const glowMaterial = new THREE.LineBasicMaterial({
           color: 0x9b87f5,
           transparent: true,
-          opacity: isMainLine ? 0.4 : 0.2,
-          linewidth: isMainLine ? 6 : 4,
+          opacity: isMainLine ? config.mainGlowOpacity : config.subGlowOpacity,
+          linewidth: isMainLine ? 3 : 2,
         })
         const glowLine = new THREE.Line(geometry.clone(), glowMaterial)
         globeGroup.add(glowLine)
       }
 
       // Add connection points as glowing spheres
-      const pointGeometry = new THREE.SphereGeometry(0.02, 8, 8)
+      const pointGeometry = new THREE.SphereGeometry(config.pointSize, 8, 8)
       const pointMaterial = new THREE.MeshBasicMaterial({
         color: 0x9b87f5,
         transparent: true,
@@ -226,17 +263,21 @@ const DigitalGlobe = () => {
       })
 
       connectionPoints.forEach((point, index) => {
-        if (index % 3 === 0) {
+        if (index % config.connectionPointSkip === 0) {
           const sphere = new THREE.Mesh(pointGeometry, pointMaterial)
           sphere.position.copy(point)
           globeGroup.add(sphere)
         }
       })
 
-      // Create country markers with larger size and blue colors
-      const markerGeometry = new THREE.SphereGeometry(0.08, 16, 16) // Increased size from 0.05 to 0.08
+      // Create country markers with responsive size
+      const markerGeometry = new THREE.SphereGeometry(
+        config.markerSize,
+        config.markerSegments,
+        config.markerSegments,
+      )
       const markerMaterial = new THREE.MeshBasicMaterial({
-        color: 0x1eaedb, // Using website's blue color
+        color: 0x1eaedb,
         transparent: true,
         opacity: 0.9,
       })
@@ -259,8 +300,12 @@ const DigitalGlobe = () => {
         marker.position.copy(position)
         marker.userData = { country, index }
 
-        // Add pulsing glow effect with larger size and blue color
-        const glowGeometry = new THREE.SphereGeometry(0.12, 16, 16) // Increased size from 0.08 to 0.12
+        // Add pulsing glow effect with responsive size
+        const glowGeometry = new THREE.SphereGeometry(
+          config.markerGlowSize,
+          config.markerSegments,
+          config.markerSegments,
+        )
         const glowMaterial = new THREE.MeshBasicMaterial({
           color: 0x6366f1, // Using website's secondary blue color
           transparent: true,
@@ -293,9 +338,13 @@ const DigitalGlobe = () => {
             const points = curve.getPoints(100)
             const geometry = new THREE.BufferGeometry().setFromPoints(points)
 
-            // Create flowing particles along the path
-            const particleCount = 20
-            const particleGeometry = new THREE.SphereGeometry(0.015, 8, 8)
+            // Create flowing particles along the path - responsive count
+            const particleCount = config.particleCount
+            const particleGeometry = new THREE.SphereGeometry(
+              config.particleSize,
+              8,
+              8,
+            )
             const particleMaterial = new THREE.MeshBasicMaterial({
               color: 0x00ffff,
               transparent: true,
@@ -325,9 +374,9 @@ const DigitalGlobe = () => {
 
       createDataFlows()
 
-      // Create network connections between random points
+      // Create network connections between random points - responsive count
       const createNetworkConnections = () => {
-        const numConnections = 15
+        const numConnections = config.networkConnections
         for (let i = 0; i < numConnections; i++) {
           const point1 =
             connectionPoints[
@@ -379,13 +428,13 @@ const DigitalGlobe = () => {
       pointLight2.position.set(-5, -5, 5)
       scene.add(pointLight2)
 
-      camera.position.set(0, 0, 6)
+      camera.position.set(0, 0, config.cameraZ)
 
       // Raycaster for mouse interaction
       const raycaster = new THREE.Raycaster()
       const mouse = new THREE.Vector2()
 
-      // Enhanced mouse interaction
+      // Enhanced mouse interaction (mouse + touch)
       const handleMouseMove = (event: MouseEvent) => {
         const rect = renderer.domElement.getBoundingClientRect()
         mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
@@ -442,11 +491,54 @@ const DigitalGlobe = () => {
         }, 2000)
       }
 
+      // Touch event handlers for mobile
+      const handleTouchStart = (event: TouchEvent) => {
+        if (event.touches.length === 1) {
+          const touch = event.touches[0]
+          isDraggingRef.current = true
+          previousMouseRef.current = { x: touch.clientX, y: touch.clientY }
+          autoRotationRef.current.enabled = false
+        }
+      }
+
+      const handleTouchMove = (event: TouchEvent) => {
+        if (event.touches.length === 1 && isDraggingRef.current) {
+          event.preventDefault()
+          const touch = event.touches[0]
+          const deltaX = touch.clientX - previousMouseRef.current.x
+          const deltaY = touch.clientY - previousMouseRef.current.y
+
+          globeGroup.rotation.y += deltaX * 0.01
+          globeGroup.rotation.x += deltaY * 0.01
+
+          previousMouseRef.current = { x: touch.clientX, y: touch.clientY }
+        }
+      }
+
+      const handleTouchEnd = () => {
+        isDraggingRef.current = false
+        setTimeout(() => {
+          if (!isDraggingRef.current) {
+            autoRotationRef.current.enabled = true
+          }
+        }, 2000)
+      }
+
       renderer.domElement.addEventListener('mousemove', handleMouseMove)
       renderer.domElement.addEventListener('mousedown', handleMouseDown)
       renderer.domElement.addEventListener('mouseup', handleMouseUp)
       renderer.domElement.addEventListener('mouseleave', handleMouseUp)
+      renderer.domElement.addEventListener('touchstart', handleTouchStart, {
+        passive: true,
+      })
+      renderer.domElement.addEventListener('touchmove', handleTouchMove, {
+        passive: false,
+      })
+      renderer.domElement.addEventListener('touchend', handleTouchEnd, {
+        passive: true,
+      })
       renderer.domElement.style.cursor = 'grab'
+      renderer.domElement.style.touchAction = 'none'
 
       // Store references
       sceneRef.current = scene
@@ -543,6 +635,9 @@ const DigitalGlobe = () => {
         renderer.domElement.removeEventListener('mousedown', handleMouseDown)
         renderer.domElement.removeEventListener('mouseup', handleMouseUp)
         renderer.domElement.removeEventListener('mouseleave', handleMouseUp)
+        renderer.domElement.removeEventListener('touchstart', handleTouchStart)
+        renderer.domElement.removeEventListener('touchmove', handleTouchMove)
+        renderer.domElement.removeEventListener('touchend', handleTouchEnd)
         if (mountRef.current && renderer.domElement) {
           mountRef.current.removeChild(renderer.domElement)
         }
