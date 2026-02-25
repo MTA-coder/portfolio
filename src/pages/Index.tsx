@@ -174,7 +174,22 @@ const Index = () => {
                   typeof window !== 'undefined' ? window.location.href : ''
                 }
               />
+              <meta
+                property="og:image"
+                content="https://mta-coder.github.io/mta-digital-storyteller/og-image.png"
+              />
+              <meta property="og:image:width" content="1200" />
+              <meta property="og:image:height" content="630" />
+              <meta property="og:image:type" content="image/png" />
+              <meta
+                property="og:image:alt"
+                content="Mohammed Tawfeq Amiri — Full Stack Developer"
+              />
               <meta name="twitter:card" content="summary_large_image" />
+              <meta
+                name="twitter:image"
+                content="https://mta-coder.github.io/mta-digital-storyteller/og-image.png"
+              />
               <script type="application/ld+json">
                 {JSON.stringify([
                   {
@@ -182,6 +197,8 @@ const Index = () => {
                     '@type': 'Person',
                     name: 'Mohammed Tawfeq Amiri',
                     jobTitle: 'Full Stack Engineer',
+                    image:
+                      'https://mta-coder.github.io/mta-digital-storyteller/profile-seo.png',
                     url: 'https://mta-coder.github.io/mta-digital-storyteller/',
                     sameAs: [
                       'https://www.linkedin.com/in/mohammed-tawfeq-amiri',
