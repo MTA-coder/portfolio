@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
   return (
     <LazyLoadSection
       id="testimonials"
-      className="py-24 bg-gradient-to-br from-tech-dark-purple/20 to-tech-blue/10 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-secondary/20 to-accent/5 relative overflow-hidden"
     >
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-5"></div>

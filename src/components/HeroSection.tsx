@@ -23,10 +23,10 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-24 md:pt-16 overflow-hidden bg-tech-dark-purple"
+      className="relative min-h-screen flex items-center pt-24 md:pt-16 overflow-hidden bg-background"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-tech-dark-purple/80 via-tech-dark-purple to-tech-dark-purple/90 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background to-background/90 z-0" />
 
       {/* Static tech shapes - no animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -126,7 +126,7 @@ const ProfileImageWithEffects = () => {
     <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
       {/* Profile image with subtle styling */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-tech-blue/30 via-tech-purple/30 to-tech-blue/30 shadow-xl border-2 border-tech-purple/20 flex items-center justify-center overflow-hidden p-1">
-        <div className="w-full h-full relative overflow-hidden rounded-full bg-tech-dark-purple/80 p-1 border border-white/10">
+        <div className="w-full h-full relative overflow-hidden rounded-full bg-secondary/80 p-1 border border-border">
           <div className="w-full h-full rounded-full overflow-hidden">
             <OptimizedImage
               src="/assets/Mohammed Tawfeq Amiri Picture.png"

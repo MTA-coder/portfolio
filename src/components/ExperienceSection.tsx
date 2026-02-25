@@ -148,7 +148,7 @@ const ExperienceSection = () => {
   return (
     <motion.section
       id="experience"
-      className="py-24 relative bg-gradient-to-b from-background via-tech-dark-purple/10 to-background"
+      className="py-24 relative bg-gradient-to-b from-background via-secondary/10 to-background"
       ref={sectionRef}
       style={{ opacity }}
     >

@@ -27,25 +27,25 @@
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 30% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 248 90% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 248 90% 65%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 248 90% 65%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 248 80% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 248 80% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 248 80% 58%;
   }
 }
 
@@ -72,6 +72,7 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s ease, color 0.4s ease;
   }
 
   body.custom-cursor-active {
@@ -328,5 +329,106 @@
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+  }
+
+  /* =================== */
+  /* LIGHT MODE STYLES   */
+  /* =================== */
+
+  /* Light mode backgrounds & surfaces */
+  .light body {
+    background: linear-gradient(
+      135deg,
+      hsl(210 30% 98%) 0%,
+      hsl(225 25% 96%) 50%,
+      hsl(240 20% 97%) 100%
+    );
+  }
+
+  .light .bg-background\/95,
+  .light .bg-background\/80 {
+    background-color: rgba(248, 249, 252, 0.95);
+  }
+
+  /* Light mode card & surface shadows */
+  .light .card-hover:hover {
+    box-shadow: 0 20px 60px -15px rgba(99, 72, 204, 0.18),
+      0 8px 20px -8px rgba(0, 0, 0, 0.08);
+    border-color: rgba(139, 117, 230, 0.3);
+  }
+
+  /* Light mode scrollbar */
+  .light ::-webkit-scrollbar-track {
+    background: hsl(220 20% 94%);
+  }
+
+  .light ::-webkit-scrollbar-thumb {
+    background: hsl(248 50% 72%);
+    border-radius: 9999px;
+  }
+
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: hsl(248 60% 60%);
+  }
+
+  /* Light mode gradient text */
+  .light .text-gradient {
+    background: linear-gradient(135deg, #6c4de6 0%, #2563eb 50%, #6c4de6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .light .gradient-text {
+    background-image: linear-gradient(to right, #6c4de6, #2563eb, #6c4de6);
+  }
+
+  /* Light mode sections — subtle alternating shading */
+  .light section:nth-child(even) {
+    background-color: rgba(240, 242, 255, 0.5);
+  }
+
+  /* Light mode hover interactions */
+  .light .framework-bubble:hover,
+  .light .blog-card:hover {
+    box-shadow: 0 10px 30px rgba(99, 72, 204, 0.12);
+  }
+
+  /* Light mode navbar shadow */
+  .light header.shadow-md {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Light mode input/form styling */
+  .light input,
+  .light textarea,
+  .light select {
+    border-color: hsl(220 20% 85%);
+    background-color: hsl(0 0% 100%);
+  }
+
+  .light input:focus,
+  .light textarea:focus,
+  .light select:focus {
+    border-color: hsl(248 80% 58%);
+    box-shadow: 0 0 0 3px rgba(108, 77, 230, 0.12);
+  }
+
+  /* Theme transition — only key properties, not * wildcard */
+  .light,
+  .dark {
+    transition: background-color 0.4s ease, color 0.3s ease;
+  }
+
+  section,
+  header,
+  footer,
+  nav,
+  main,
+  .bg-background,
+  .bg-secondary,
+  .bg-card {
+    transition: background-color 0.4s ease, color 0.3s ease,
+      border-color 0.3s ease;
   }
 }

@@ -196,7 +196,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-tech-dark-purple/30 relative overflow-hidden"
+      className="py-24 bg-secondary/30 relative overflow-hidden"
     >
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-10"></div>

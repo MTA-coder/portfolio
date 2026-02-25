@@ -25,10 +25,10 @@ const OptimizedMobileHeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-24 md:pt-16 overflow-hidden bg-tech-dark-purple"
+      className="relative min-h-screen flex items-center pt-24 md:pt-16 overflow-hidden bg-background"
     >
       {/* Simplified background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-tech-dark-purple/90 via-tech-dark-purple to-tech-dark-purple/95 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background to-background/95 z-0" />
 
       {/* Conditional background elements - removed mobile glow effects */}
       {!settings.reducedMotion && !isMobile && (
@@ -221,7 +221,7 @@ const OptimizedProfileImage = () => {
     <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
       {/* Main profile container - removed glow effects on mobile */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-tech-blue/20 via-tech-purple/20 to-tech-blue/20 shadow-2xl border border-tech-purple/30 flex items-center justify-center overflow-hidden p-1">
-        <div className="w-full h-full relative overflow-hidden rounded-full bg-tech-dark-purple/90 p-1 border border-white/10">
+        <div className="w-full h-full relative overflow-hidden rounded-full bg-secondary/90 p-1 border border-border">
           <div className="w-full h-full rounded-full overflow-hidden">
             <OptimizedImage
               src="/assets/Mohammed Tawfeq Amiri Picture.png"

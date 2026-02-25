@@ -4,11 +4,11 @@ import PerformantBackground from '@/components/PerformantBackground'
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-tech-dark-purple relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
       {/* Themed animated background */}
       <PerformantBackground />
       <motion.div
-        className="relative z-10 text-center max-w-lg mx-auto p-8 rounded-2xl bg-background/70 backdrop-blur-md border border-white/10 shadow-xl"
+        className="relative z-10 text-center max-w-lg mx-auto p-8 rounded-2xl bg-background/70 backdrop-blur-md border border-border shadow-xl"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}

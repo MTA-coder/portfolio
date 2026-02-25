@@ -26,7 +26,7 @@ interface EducationCardProps {
 const EducationCard: React.FC<EducationCardProps> = ({ education }) => {
   return (
     <motion.div
-      className="bg-background/60 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-lg overflow-hidden relative"
+      className="bg-background/60 backdrop-blur-sm border border-border rounded-xl p-6 shadow-lg overflow-hidden relative"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, type: 'spring' }}

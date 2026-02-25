@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-tech-dark-purple/80 via-tech-dark-purple to-tech-dark-purple/90 flex items-center justify-center py-12 px-4">
+    <main className="min-h-screen bg-gradient-to-br from-background/80 via-background to-background/90 flex items-center justify-center py-12 px-4">
       <section className="w-full max-w-3xl mx-auto bg-background/80 rounded-2xl shadow-2xl border border-tech-purple/30 p-8 md:p-14 backdrop-blur-lg transition-all duration-300">
         <nav className="mb-8 flex justify-start">
           <Link to="/">

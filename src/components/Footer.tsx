@@ -13,7 +13,7 @@ const Footer = () => {
   }
 
   return (
-    <LazyLoadSection className="bg-tech-dark-purple/50 backdrop-blur-sm border-t border-border relative overflow-hidden">
+    <LazyLoadSection className="bg-secondary/50 backdrop-blur-sm border-t border-border relative overflow-hidden">
       {/* Background grid */}
       <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-5"></div>
 

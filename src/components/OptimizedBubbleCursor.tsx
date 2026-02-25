@@ -168,14 +168,14 @@ const OptimizedBubbleCursor: React.FC = React.memo(() => {
           (r) => (r.style.background = 'rgba(150,120,255,0.12)'),
         )
       } else {
-        c.style.background = 'rgba(30,120,255,0.95)'
+        c.style.background = 'rgba(55,48,163,0.9)'
         ring.style.background =
-          'radial-gradient(circle, rgba(60,140,255,0.06), transparent)'
+          'radial-gradient(circle, rgba(55,48,163,0.10), transparent)'
         trailRefs.current.forEach(
-          (t) => (t.style.background = 'rgba(80,160,255,0.14)'),
+          (t) => (t.style.background = 'rgba(67,56,202,0.22)'),
         )
         rippleRefs.current.forEach(
-          (r) => (r.style.background = 'rgba(60,140,255,0.10)'),
+          (r) => (r.style.background = 'rgba(67,56,202,0.16)'),
         )
       }
     }

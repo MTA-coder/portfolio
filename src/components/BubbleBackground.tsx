@@ -73,7 +73,7 @@ const BubbleBackground = () => {
             className={`absolute rounded-full ${
               theme === 'dark'
                 ? 'bg-gradient-to-br from-tech-purple/30 to-tech-blue/30'
-                : 'bg-gradient-to-br from-tech-blue/40 to-tech-purple/40'
+                : 'bg-gradient-to-br from-indigo-500/35 to-blue-400/30'
             }`}
             style={{
               width: bubble.size,
@@ -81,8 +81,8 @@ const BubbleBackground = () => {
               top: `${bubble.yPos}%`,
               left: -bubble.size,
               willChange: 'transform',
-              opacity: 0.08,
-              filter: 'blur(0.5px)',
+              opacity: theme === 'dark' ? 0.08 : 0.18,
+              filter: theme === 'dark' ? 'blur(0.5px)' : 'blur(1px)',
             }}
             animate={{
               // horizontal translation only (cheap on compositor)

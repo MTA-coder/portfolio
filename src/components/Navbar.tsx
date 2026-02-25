@@ -10,17 +10,14 @@ import {
   Download,
   Menu,
   X,
-  Moon,
-  Sun,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme } from '@/hooks/useTheme'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,14 +111,7 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <motion.button
-              onClick={toggleTheme}
-              className="text-muted-foreground hover:text-tech-purple p-2 rounded-lg transition-colors"
-              whileTap={{ scale: 0.9, rotate: 180 }}
-              transition={{ duration: 0.3 }}
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
+            <ThemeToggle size={18} />
             <a
               href="https://www.linkedin.com/in/mohammed-tawfeq-amiri"
               target="_blank"
@@ -179,14 +169,7 @@ const Navbar = () => {
 
           {/* Mobile Navigation - Theme Toggle and Menu Button */}
           <div className="md:hidden flex items-center space-x-3">
-            <motion.button
-              onClick={toggleTheme}
-              className="text-muted-foreground hover:text-tech-purple p-2 rounded-lg transition-colors"
-              whileTap={{ scale: 0.9, rotate: 180 }}
-              transition={{ duration: 0.3 }}
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
+            <ThemeToggle size={18} />
 
             <motion.button
               className="text-foreground relative z-[60] p-2"

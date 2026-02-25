@@ -291,7 +291,7 @@ const Projects = () => {
       <Navbar />
 
       {/* Hero section */}
-      <section className="pt-28 sm:pt-32 pb-16 bg-tech-dark-purple/30 relative overflow-hidden">
+      <section className="pt-28 sm:pt-32 pb-16 bg-secondary/30 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-10"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-tech-blue/5 blur-3xl"></div>
@@ -383,7 +383,7 @@ const Projects = () => {
 
                     {/* Logo overlay */}
                     {project.logo && (
-                      <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+                      <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full overflow-hidden border-2 border-border">
                         <OptimizedImage
                           src={project.logo}
                           alt="Client logo"
@@ -397,7 +397,7 @@ const Projects = () => {
                     )}
 
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-tech-dark-purple/80 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity"></div>
                   </div>
 
                   {/* Project content */}
@@ -493,7 +493,7 @@ const Projects = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-12 sm:py-16 bg-tech-dark-purple/30 relative overflow-hidden">
+      <section className="py-12 sm:py-16 bg-secondary/30 relative overflow-hidden">
         <div className="absolute -top-10 left-0 w-full h-10 bg-gradient-to-b from-transparent to-background/60" />
         <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-10"></div>
         <div className="absolute -top-16 right-10 w-40 h-40 rounded-full bg-tech-purple/15 blur-2xl"></div>

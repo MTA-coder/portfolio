@@ -127,10 +127,10 @@ const BlogDetail = () => {
                 <div className="flex items-center gap-2 mb-3">
                   <span className="blog-tag">{post.category}</span>
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white drop-shadow-md">
                   {post.title}
                 </h1>
-                <div className="flex items-center gap-4 text-white/80">
+                <div className="flex items-center gap-4 text-white/90 drop-shadow-sm">
                   <div className="flex items-center gap-2">
                     <Calendar size={16} />
                     <span>{post.date}</span>

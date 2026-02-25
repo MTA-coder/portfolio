@@ -27,7 +27,15 @@ const ProjectsSection = () => {
       description:
         'End-to-end ERP with customer, employee, production, order, shipping, invoicing, and financial modules — all with smart filters, exports, and real-time analytics.',
       image: '/assets/lamsat/Lamsat%20Logo.jpg',
-      tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'Angular Material', 'ApexCharts', 'ERP'],
+      tags: [
+        'Angular',
+        'Laravel',
+        'PHP',
+        'MySQL',
+        'Angular Material',
+        'ApexCharts',
+        'ERP',
+      ],
       featured: true,
     },
     {
@@ -171,7 +179,7 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="py-24 bg-tech-dark-purple/30 relative overflow-hidden"
+      className="py-24 bg-secondary/30 relative overflow-hidden"
     >
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-10"></div>
@@ -232,7 +240,7 @@ const ProjectsSection = () => {
 
                   {/* Logo overlay */}
                   {project.logo && (
-                    <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+                    <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full overflow-hidden border-2 border-border">
                       <OptimizedImage
                         src={project.logo}
                         alt="Client logo"
@@ -242,7 +250,7 @@ const ProjectsSection = () => {
                   )}
 
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-tech-dark-purple/80 to-transparent opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-50 group-hover:opacity-70 transition-opacity"></div>
                 </div>
 
                 {/* Project content */}

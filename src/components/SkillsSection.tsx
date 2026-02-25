@@ -165,7 +165,7 @@ const SkillsSection = () => {
   return (
     <LazyLoadSection
       id="skills"
-      className="py-24 bg-tech-dark-purple/30 relative overflow-hidden"
+      className="py-24 bg-secondary/30 relative overflow-hidden"
     >
       {/* Background decorations */}
       <BubbleBackground />
@@ -298,7 +298,7 @@ const SkillsSection = () => {
                             }
                           ></div>
                         </div>
-                        <div className="text-sm mt-1 text-white">
+                        <div className="text-sm mt-1 text-foreground">
                           {skill.percentage}%
                         </div>
                       </motion.div>

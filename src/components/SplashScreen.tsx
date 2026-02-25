@@ -17,7 +17,7 @@ const SplashScreen = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-tech-dark-purple"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
@@ -72,7 +72,7 @@ const SplashScreen = () => {
 
             {/* Loading text */}
             <motion.p
-              className="text-white mt-6 text-center"
+              className="text-foreground mt-6 text-center"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
