@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useIsMobile } from '@/hooks/use-mobile'
+import SyriaFlag from './SyriaFlag'
 
 interface TimelineItem {
   id: number
@@ -128,7 +129,7 @@ const StoryTimelineItem: React.FC<StoryTimelineItemProps> = ({
     if (country.includes('Germany')) return '🇩🇪'
     if (country.includes('Saudi Arabia')) return '🇸🇦'
     if (country.includes('Saudi')) return '🇸🇦'
-    if (country.includes('Syria')) return '🇸🇾'
+    if (country.includes('Syria')) return <SyriaFlag size={24} />
     return '🌍'
   }
 

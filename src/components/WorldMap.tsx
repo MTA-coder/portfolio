@@ -1,60 +1,70 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Globe } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MapPin, Globe } from 'lucide-react'
+import SyriaFlag from './SyriaFlag'
 
 interface Country {
-  name: string;
-  coordinates: [number, number];
-  flag: string;
-  projects: number;
+  name: string
+  coordinates: [number, number]
+  flag: string
+  projects: number
 }
 
 const WorldMap = () => {
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
-  const [isGlobeView, setIsGlobeView] = useState(true);
-  const globeRef = useRef<HTMLDivElement>(null);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null)
+  const [isGlobeView, setIsGlobeView] = useState(true)
+  const globeRef = useRef<HTMLDivElement>(null)
 
   const countries: Country[] = [
-    { name: 'Syria', coordinates: [36.2, 38.0], flag: '🇸🇾', projects: 3 },
+    { name: 'Syria', coordinates: [36.2, 38.0], flag: 'SY', projects: 3 },
     { name: 'UAE', coordinates: [54.0, 24.0], flag: '🇦🇪', projects: 8 },
-    { name: 'Saudi Arabia', coordinates: [45.0, 24.0], flag: '🇸🇦', projects: 5 },
+    {
+      name: 'Saudi Arabia',
+      coordinates: [45.0, 24.0],
+      flag: '🇸🇦',
+      projects: 5,
+    },
     { name: 'Malaysia', coordinates: [102.0, 4.2], flag: '🇲🇾', projects: 4 },
     { name: 'Germany', coordinates: [10.4, 51.1], flag: '🇩🇪', projects: 7 },
     { name: 'Finland', coordinates: [26.0, 64.9], flag: '🇫🇮', projects: 2 },
-    { name: 'United Kingdom', coordinates: [-3.4, 55.4], flag: '🇬🇧', projects: 6 }
-  ];
+    {
+      name: 'United Kingdom',
+      coordinates: [-3.4, 55.4],
+      flag: '🇬🇧',
+      projects: 6,
+    },
+  ]
 
   useEffect(() => {
-    const globe = globeRef.current;
-    if (!globe) return;
+    const globe = globeRef.current
+    if (!globe) return
 
-    let animationId: number;
-    let rotation = 0;
+    let animationId: number
+    let rotation = 0
 
     const animate = () => {
-      rotation += 0.5;
-      globe.style.transform = `rotateY(${rotation}deg) rotateX(10deg)`;
-      animationId = requestAnimationFrame(animate);
-    };
+      rotation += 0.5
+      globe.style.transform = `rotateY(${rotation}deg) rotateX(10deg)`
+      animationId = requestAnimationFrame(animate)
+    }
 
     if (isGlobeView) {
-      animate();
+      animate()
     }
 
     return () => {
       if (animationId) {
-        cancelAnimationFrame(animationId);
+        cancelAnimationFrame(animationId)
       }
-    };
-  }, [isGlobeView]);
+    }
+  }, [isGlobeView])
 
   const convertToMapPosition = (coordinates: [number, number]) => {
-    const [lng, lat] = coordinates;
-    const x = ((lng + 180) / 360) * 100;
-    const y = ((90 - lat) / 180) * 100;
-    return { x: `${x}%`, y: `${y}%` };
-  };
+    const [lng, lat] = coordinates
+    const x = ((lng + 180) / 360) * 100
+    const y = ((90 - lat) / 180) * 100
+    return { x: `${x}%`, y: `${y}%` }
+  }
 
   return (
     <div className="relative">
@@ -64,8 +74,8 @@ const WorldMap = () => {
           <button
             onClick={() => setIsGlobeView(true)}
             className={`px-4 py-2 rounded-md transition-all duration-300 flex items-center gap-2 ${
-              isGlobeView 
-                ? 'bg-tech-purple text-white shadow-[0_0_10px_rgba(155,135,245,0.5)]' 
+              isGlobeView
+                ? 'bg-tech-purple text-white shadow-[0_0_10px_rgba(155,135,245,0.5)]'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
@@ -75,8 +85,8 @@ const WorldMap = () => {
           <button
             onClick={() => setIsGlobeView(false)}
             className={`px-4 py-2 rounded-md transition-all duration-300 flex items-center gap-2 ${
-              !isGlobeView 
-                ? 'bg-tech-purple text-white shadow-[0_0_10px_rgba(155,135,245,0.5)]' 
+              !isGlobeView
+                ? 'bg-tech-purple text-white shadow-[0_0_10px_rgba(155,135,245,0.5)]'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
@@ -96,20 +106,22 @@ const WorldMap = () => {
             transition={{ duration: 0.5 }}
             className="flex justify-center items-center h-96"
           >
-            <div 
+            <div
               ref={globeRef}
               className="relative w-80 h-80 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl"
-              style={{ 
-                background: 'conic-gradient(from 0deg, #3b82f6, #1d4ed8, #1e40af, #3b82f6)',
-                boxShadow: '0 0 50px rgba(59, 130, 246, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.3)'
+              style={{
+                background:
+                  'conic-gradient(from 0deg, #3b82f6, #1d4ed8, #1e40af, #3b82f6)',
+                boxShadow:
+                  '0 0 50px rgba(59, 130, 246, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.3)',
               }}
             >
               {/* Globe continents overlay */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/30 via-yellow-400/20 to-green-600/40 opacity-70"></div>
-              
+
               {/* Atmosphere effect */}
               <div className="absolute -inset-4 rounded-full bg-blue-400/20 blur-xl animate-pulse-soft"></div>
-              
+
               {/* Country markers on globe */}
               {countries.map((country, index) => (
                 <motion.div
@@ -127,7 +139,12 @@ const WorldMap = () => {
                   whileTap={{ scale: 0.9 }}
                 >
                   <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                    {country.flag} {country.name}
+                    {country.flag === 'SY' ? (
+                      <SyriaFlag size={16} />
+                    ) : (
+                      country.flag
+                    )}{' '}
+                    {country.name}
                   </div>
                 </motion.div>
               ))}
@@ -159,10 +176,10 @@ const WorldMap = () => {
                 />
               </svg>
             </div>
-            
+
             {/* Country markers */}
             {countries.map((country, index) => {
-              const position = convertToMapPosition(country.coordinates);
+              const position = convertToMapPosition(country.coordinates)
               return (
                 <motion.div
                   key={country.name}
@@ -176,11 +193,20 @@ const WorldMap = () => {
                   whileTap={{ scale: 0.9 }}
                 >
                   <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white text-sm px-3 py-2 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
-                    <div className="font-semibold">{country.flag} {country.name}</div>
-                    <div className="text-xs text-tech-purple">{country.projects} projects</div>
+                    <div className="font-semibold">
+                      {country.flag === 'SY' ? (
+                        <SyriaFlag size={18} />
+                      ) : (
+                        country.flag
+                      )}{' '}
+                      {country.name}
+                    </div>
+                    <div className="text-xs text-tech-purple">
+                      {country.projects} projects
+                    </div>
                   </div>
                 </motion.div>
-              );
+              )
             })}
           </motion.div>
         )}
@@ -204,10 +230,21 @@ const WorldMap = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-center">
-                <div className="text-6xl mb-4">{selectedCountry.flag}</div>
-                <h3 className="text-2xl font-bold mb-2 text-foreground">{selectedCountry.name}</h3>
+                <div className="text-6xl mb-4">
+                  {selectedCountry.flag === 'SY' ? (
+                    <SyriaFlag size={64} />
+                  ) : (
+                    selectedCountry.flag
+                  )}
+                </div>
+                <h3 className="text-2xl font-bold mb-2 text-foreground">
+                  {selectedCountry.name}
+                </h3>
                 <p className="text-muted-foreground mb-4">
-                  Successfully delivered <span className="text-tech-purple font-semibold">{selectedCountry.projects} projects</span>
+                  Successfully delivered{' '}
+                  <span className="text-tech-purple font-semibold">
+                    {selectedCountry.projects} projects
+                  </span>
                 </p>
                 <button
                   onClick={() => setSelectedCountry(null)}
@@ -239,14 +276,20 @@ const WorldMap = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="text-2xl mb-1">{country.flag}</div>
-            <div className="text-xs font-medium text-foreground">{country.name}</div>
-            <div className="text-xs text-tech-purple">{country.projects} proj.</div>
+            <div className="text-2xl mb-1">
+              {country.flag === 'SY' ? <SyriaFlag size={28} /> : country.flag}
+            </div>
+            <div className="text-xs font-medium text-foreground">
+              {country.name}
+            </div>
+            <div className="text-xs text-tech-purple">
+              {country.projects} proj.
+            </div>
           </motion.div>
         ))}
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default WorldMap;
+export default WorldMap
