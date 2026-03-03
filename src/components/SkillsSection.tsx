@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import BubbleBackground from './BubbleBackground'
 import { useIsMobile } from '@/hooks/use-mobile'
@@ -218,119 +218,180 @@ const SkillsSection = () => {
             layout
             transition={{ duration: 0.5 }}
           >
-            {skillCategories
-              .find((category) => category.name === activeCategory)
-              ?.skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  className="relative"
-                  aria-label={`Skill ${skill.name} proficiency ${skill.percentage} percent`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, zIndex: 10 }}
-                  onHoverStart={() => setHoveredSkill(skill.name)}
-                  onHoverEnd={() => setHoveredSkill(null)}
-                >
-                  <div
-                    className={cn(
-                      'rounded-lg p-4 h-full flex flex-col items-center justify-center text-center',
-                      'bg-secondary/30 backdrop-blur-sm transition-all duration-300',
-                      'border border-tech-purple/20 hover:border-tech-purple',
-                      'shadow-lg hover:shadow-tech-purple/20',
-                    )}
-                    style={{
-                      boxShadow:
-                        hoveredSkill === skill.name
-                          ? `0 0 15px ${skill.color}40`
-                          : undefined,
-                      borderColor:
-                        hoveredSkill === skill.name
-                          ? `${skill.color}80`
-                          : undefined,
-                    }}
-                  >
-                    <div
-                      className="w-16 h-16 mb-4 rounded-full flex items-center justify-center p-3"
-                      style={{
-                        backgroundColor: `${skill.color}15`,
-                        border: `1px solid ${skill.color}30`,
-                      }}
-                    >
-                      <OptimizedImage
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="w-full h-full object-contain"
-                        withSkeleton
-                        widths={[48, 64, 80, 96]}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement
-                          target.style.display = 'none'
-                          const parent = target.parentElement
-                          if (parent) {
-                            const text = document.createElement('span')
-                            text.className = 'text-2xl font-bold'
-                            text.style.color = skill.color
-                            text.innerText = skill.name.substring(0, 2)
-                            parent.appendChild(text)
-                          }
-                        }}
-                      />
-                    </div>
-
-                    <h4 className="text-lg font-medium">{skill.name}</h4>
-
-                    {hoveredSkill === skill.name && (
-                      <motion.div
-                        className="w-full mt-3"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="skill-bar">
-                          <div
-                            className="skill-progress"
-                            style={
-                              {
-                                '--progress': `${skill.percentage}%`,
-                                background: `linear-gradient(to right, ${skill.color}, ${skill.color}80)`,
-                              } as React.CSSProperties
-                            }
-                          ></div>
-                        </div>
-                        <div className="text-sm mt-1 text-foreground">
-                          {skill.percentage}%
-                        </div>
-                      </motion.div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+            <AnimatePresence mode="popLayout">
+              {skillCategories
+                .find((category) => category.name === activeCategory)
+                ?.skills.map((skill, index) => (
+                  <SkillCard
+                    key={skill.name}
+                    skill={skill}
+                    index={index}
+                    isHovered={hoveredSkill === skill.name}
+                    onHoverStart={() => setHoveredSkill(skill.name)}
+                    onHoverEnd={() => setHoveredSkill(null)}
+                  />
+                ))}
+            </AnimatePresence>
           </motion.div>
         </div>
-
-        {/* <div className="mt-16">
-          <motion.div
-            className="text-center mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: '-100px' }}
-          >
-            <h3 className="text-2xl font-bold mb-3">
-              <span className="text-gradient">Frameworks</span> & Technologies
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Interactive visualization of my primary frameworks and
-              technologies.
-              {isMobile ? ' Tap' : ' Move your cursor through'} the bubbles to
-              see them react!
-            </p>
-          </motion.div>
-        </div> */}
       </div>
     </LazyLoadSection>
   )
 }
+
+/* ------------------------------------------------------------------ */
+/*  Skill Card with glow + liquid fill                                  */
+/* ------------------------------------------------------------------ */
+
+interface SkillCardProps {
+  skill: Skill
+  index: number
+  isHovered: boolean
+  onHoverStart: () => void
+  onHoverEnd: () => void
+}
+
+const SkillCard: React.FC<SkillCardProps> = React.memo(
+  ({ skill, index, isHovered, onHoverStart, onHoverEnd }) => {
+    return (
+      <motion.div
+        layout
+        key={skill.name}
+        className="relative"
+        aria-label={`Skill ${skill.name} proficiency ${skill.percentage} percent`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ delay: index * 0.08, duration: 0.35 }}
+        whileHover={{ scale: 1.06, zIndex: 10 }}
+        onHoverStart={onHoverStart}
+        onHoverEnd={onHoverEnd}
+        onTouchStart={onHoverStart}
+        onTouchEnd={onHoverEnd}
+      >
+        <div
+          className={cn(
+            'rounded-lg p-4 flex flex-col items-center justify-center text-center',
+            'bg-secondary/30 backdrop-blur-sm',
+            'border border-tech-purple/20',
+            'shadow-lg',
+            'relative overflow-hidden',
+            'transition-[border-color,box-shadow] duration-500 ease-out',
+            'h-[220px] md:h-[220px] lg:h-[220px] min-h-[220px] max-h-[220px]', // fixed height
+          )}
+          style={{
+            boxShadow: isHovered
+              ? `0 0 24px ${skill.color}50, 0 0 48px ${skill.color}20`
+              : undefined,
+            borderColor: isHovered ? `${skill.color}90` : undefined,
+          }}
+        >
+          {/* Liquid fill layer – rises from the bottom based on percentage */}
+          <motion.div
+            className="absolute bottom-0 left-0 w-full pointer-events-none"
+            initial={{ height: '0%' }}
+            animate={{ height: isHovered ? `${skill.percentage}%` : '0%' }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1], // custom ease-out expo
+            }}
+            style={{
+              background: `linear-gradient(to top, ${skill.color}30, ${skill.color}08)`,
+            }}
+          />
+
+          {/* Liquid surface wave when hovered */}
+          {isHovered && (
+            <motion.div
+              className="absolute left-0 w-full h-[6px] pointer-events-none"
+              initial={{ bottom: '0%', opacity: 0 }}
+              animate={{
+                bottom: `${skill.percentage}%`,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              style={{
+                background: `radial-gradient(ellipse at center, ${skill.color}60 0%, transparent 70%)`,
+                filter: 'blur(1px)',
+              }}
+            />
+          )}
+
+          {/* Content layer – always above the liquid */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center">
+            <div
+              className="w-16 h-16 mb-4 rounded-full flex items-center justify-center p-3 transition-all duration-500"
+              style={{
+                backgroundColor: isHovered
+                  ? `${skill.color}25`
+                  : `${skill.color}15`,
+                border: `1px solid ${
+                  isHovered ? `${skill.color}60` : `${skill.color}30`
+                }`,
+                boxShadow: isHovered ? `0 0 16px ${skill.color}40` : 'none',
+              }}
+            >
+              <OptimizedImage
+                src={skill.icon}
+                alt={skill.name}
+                className="w-full h-full object-contain transition-transform duration-300"
+                style={{
+                  transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+                  filter: isHovered
+                    ? `drop-shadow(0 0 6px ${skill.color}80)`
+                    : 'none',
+                }}
+                withSkeleton
+                widths={[48, 64, 80, 96]}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  const parent = target.parentElement
+                  if (parent) {
+                    const text = document.createElement('span')
+                    text.className = 'text-2xl font-bold'
+                    text.style.color = skill.color
+                    text.innerText = skill.name.substring(0, 2)
+                    parent.appendChild(text)
+                  }
+                }}
+              />
+            </div>
+
+            <h4
+              className="text-lg font-medium truncate overflow-hidden whitespace-nowrap w-full text-center"
+              style={{ lineHeight: '1.2em', height: '1.2em' }}
+            >
+              {skill.name}
+            </h4>
+
+            {/* Percentage label – appears on hover */}
+            <AnimatePresence>
+              {isHovered && (
+                <motion.div
+                  className="mt-2 text-center"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <span
+                    className="text-sm font-bold"
+                    style={{ color: skill.color }}
+                  >
+                    {skill.percentage}%
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </motion.div>
+    )
+  },
+)
 
 export default SkillsSection

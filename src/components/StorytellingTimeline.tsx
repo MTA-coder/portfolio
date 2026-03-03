@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import {
   Calendar,
   MapPin,
@@ -116,6 +116,11 @@ const StoryTimelineItem: React.FC<StoryTimelineItemProps> = ({
   isMobile,
 }) => {
   const isRight = isMobile ? true : item.isRight
+  const itemRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(itemRef, {
+    once: true,
+    margin: '-20% 0px -20% 0px',
+  })
 
   const getCountryFlag = (location: string) => {
     const country = location || ''
@@ -134,6 +139,7 @@ const StoryTimelineItem: React.FC<StoryTimelineItemProps> = ({
   return (
     <motion.div
       id={`timeline-item-${item.id}`}
+      ref={itemRef}
       className={cn(
         'timeline-item relative flex items-center',
         isMobile ? 'my-10' : 'my-20 md:my-32',
@@ -191,6 +197,48 @@ const StoryTimelineItem: React.FC<StoryTimelineItemProps> = ({
           transition={{ duration: 0.8, delay: 0.3 }}
         />
       </div>
+
+      {/* Desktop only: Floating date on the OPPOSITE side – book-page-flip animation */}
+      {!isMobile && (
+        <motion.div
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 z-30',
+            isRight
+              ? 'right-[calc(55%+16px)]' // card is right → date goes left
+              : 'left-[calc(55%+16px)]', // card is left  → date goes right
+          )}
+          style={{ perspective: 1200 }}
+        >
+          <motion.div
+            className="bg-gradient-to-br from-tech-purple/15 to-tech-blue/10 border border-tech-purple/40 backdrop-blur-md rounded-lg px-5 py-3 shadow-2xl"
+            initial={{
+              rotateY: isRight ? 90 : -90,
+              opacity: 0,
+              scale: 0.8,
+            }}
+            animate={
+              isInView
+                ? { rotateY: 0, opacity: 1, scale: 1 }
+                : { rotateY: isRight ? 90 : -90, opacity: 0, scale: 0.8 }
+            }
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{
+              transformOrigin: isRight ? 'right center' : 'left center',
+              backfaceVisibility: 'hidden',
+              zIndex: 30,
+            }}
+          >
+            <div className="flex items-center gap-2 text-base font-bold text-tech-purple whitespace-nowrap">
+              <Calendar size={18} />
+              <span>{item.date}</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Enhanced content card with storytelling elements */}
       <motion.div
