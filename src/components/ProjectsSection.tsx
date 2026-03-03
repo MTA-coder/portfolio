@@ -101,65 +101,7 @@ const ProjectsSection = () => {
       image: '/assets/pro-decor/Hero Section ProDecor.jpg',
       tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'REST APIs'],
       featured: true,
-    },
-    {
-      id: 'correspondence',
-      title: 'Automated Correspondence System',
-      description:
-        'A comprehensive correspondence system for government employees, enhancing communication efficiency by 40%.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
-      logo: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952',
-      tags: ['Angular', 'ASP.NET Core', 'SQL Server', 'AI Integration'],
-      featured: true,
-    },
-    {
-      id: 'moei',
-      title: 'Ministry of Energy Industry System',
-      description:
-        'Licensing system for MOEI with AI-driven chatbots and integrated authentication via UAE PASS.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d',
-      tags: ['ASP.NET Core', 'Angular', 'Entity Framework', 'AI Chatbot'],
-      demoUrl: '#',
-      featured: true,
-    },
-    {
-      id: 'restaurant',
-      title: 'Restaurant SaaS Platform',
-      description:
-        'Ecommerce SaaS platform for indoor and outdoor restaurant operations with real-time kitchen tracking.',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-      tags: ['Angular', 'Laravel', 'Pusher', 'eCommerce'],
-      githubUrl: '#',
-      demoUrl: '#',
-    },
-    {
-      id: 'erp',
-      title: 'Employee Management ERP',
-      description:
-        'ERP system for managing employee, client, and worker information with financial account tracking.',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
-      tags: ['Angular', 'Ngrx', 'Ag-Grid', 'Unit Testing'],
-      demoUrl: '#',
-    },
-    {
-      id: 'elearning',
-      title: 'E-Learning Platform',
-      description:
-        'Interactive learning platform with course management, quizzes, and student progress tracking.',
-      image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b',
-      tags: ['Angular', 'Laravel', 'REST API', 'Video Streaming'],
-      githubUrl: '#',
-    },
-    {
-      id: 'ecommerce',
-      title: 'E-commerce Store & Admin Panel',
-      description:
-        'Comprehensive e-commerce solution with customer-facing store and admin control dashboard.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-      tags: ['Angular', 'Laravel', 'Payment Integration', 'Admin Panel'],
-      demoUrl: '#',
-      githubUrl: '#',
-    },
+    }
   ]
 
   const filters = [
