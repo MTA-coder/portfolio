@@ -59,60 +59,155 @@ const Index = () => {
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
-    const smoothScrollTo = (id: string) => {
+
+    // Ordered list of lazy-loaded section ids
+    const SECTION_ORDER = [
+      'about',
+      'skills',
+      'experience',
+      'projects',
+      'testimonials',
+      'blog',
+      'contact',
+    ]
+
+    /**
+     * Smooth animated scroll that adapts in real-time as lazy sections load and
+     * shift the page layout.  Uses requestAnimationFrame with easeInOutCubic for
+     * a polished, professional feel, then a settle phase for micro-corrections.
+     */
+    const ANIM_DURATION = 900 // ms for main scroll animation
+    const SETTLE_INTERVAL = 80 // ms between post-animation stability checks
+    const SETTLE_REQUIRED = 4 // consecutive stable checks before done
+
+    const ease = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+    const getTargetY = (id: string) => {
       const el = document.getElementById(id)
-      if (!el) return
+      if (!el) return window.scrollY
       const header = document.querySelector('header') as HTMLElement | null
       const headerOffset = header ? header.offsetHeight + 8 : 0
-      const rectTop = el.getBoundingClientRect().top + window.pageYOffset
-      const target = Math.max(rectTop - headerOffset, 0)
-      window.scrollTo({
-        top: target,
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-      })
-      // Update hash without jumping
-      history.replaceState(null, '', `#${id}`)
+      return Math.max(
+        el.getBoundingClientRect().top + window.scrollY - headerOffset,
+        0,
+      )
+    }
+
+    const scrollToSection = (targetId: string) => {
+      let animStartY = window.scrollY
+      let animStartTime = 0
+      let currentTargetY = getTargetY(targetId)
+
+      // ── Main animation (rAF, 60 fps, easeInOutCubic) ──
+      const animate = (now: number) => {
+        if (!animStartTime) animStartTime = now
+
+        // Recalculate target — sections may still be rendering
+        const newTargetY = getTargetY(targetId)
+
+        // If the target shifted (layout changed), smoothly remap from
+        // the current scroll position so the animation never "jumps"
+        if (Math.abs(newTargetY - currentTargetY) > 3) {
+          animStartY = window.scrollY
+          animStartTime = now
+          currentTargetY = newTargetY
+        }
+
+        const elapsed = now - animStartTime
+        const progress = Math.min(elapsed / ANIM_DURATION, 1)
+        const y = animStartY + (currentTargetY - animStartY) * ease(progress)
+
+        window.scrollTo({ top: y, behavior: 'auto' })
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        } else {
+          settlePhase(targetId)
+        }
+      }
+
+      // ── Settle phase: tiny smooth corrections until position is stable ──
+      const settlePhase = (id: string) => {
+        let stableCount = 0
+        let lastY = getTargetY(id)
+        let attempts = 0
+
+        const check = () => {
+          attempts++
+          const y = getTargetY(id)
+
+          if (Math.abs(y - lastY) < 2) {
+            stableCount++
+          } else {
+            stableCount = 0
+            // Smooth micro-correction so user sees gentle adjustment
+            window.scrollTo({
+              top: y,
+              behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            })
+          }
+          lastY = y
+
+          if (stableCount >= SETTLE_REQUIRED || attempts > 30) {
+            window.scrollTo({
+              top: y,
+              behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            })
+            history.replaceState(null, '', `#${id}`)
+          } else {
+            setTimeout(check, SETTLE_INTERVAL)
+          }
+        }
+
+        check()
+      }
+
+      // Kick off after React flushes pending renders
+      requestAnimationFrame(() => requestAnimationFrame(animate))
     }
 
     const handleNavClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null
+      if (!link) return
 
-      if (link) {
-        const targetId = link.getAttribute('href')?.substring(1)
-        if (!targetId) return
-        const loadedEl = document.querySelector(
-          `[data-lazy-loaded='true'][data-lazy-id='${targetId}']`,
-        ) as HTMLElement | null
-        const anchorEl = document.getElementById(targetId)
-        // If section already loaded, smooth scroll with offset
-        if (loadedEl || (anchorEl && !anchorEl?.dataset.lazyId)) {
-          e.preventDefault()
-          smoothScrollTo(targetId)
-          return
-        }
-        // Not loaded yet: force load then scroll when ready
-        if (!loadedEl) {
-          e.preventDefault()
-          const once = (evt: Event) => {
-            const id = (evt as CustomEvent<{ id: string }>).detail?.id
-            if (id === targetId) {
-              window.removeEventListener(
-                'lazySectionLoaded',
-                once as EventListener,
-              )
-              // Defer to next frame for layout after mount
-              requestAnimationFrame(() => smoothScrollTo(targetId))
-            }
-          }
-          window.addEventListener('lazySectionLoaded', once as EventListener)
+      const targetId = link.getAttribute('href')?.substring(1)
+      if (!targetId) return
+
+      e.preventDefault()
+
+      // "home" is never lazy, just scroll to top
+      if (targetId === 'home') {
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        })
+        history.replaceState(null, '', `#home`)
+        return
+      }
+
+      // Force-load every section from the first up to and including the target
+      // so the page height is correct before we scroll.
+      const targetIndex = SECTION_ORDER.indexOf(targetId)
+      if (targetIndex !== -1) {
+        for (let i = 0; i <= targetIndex; i++) {
           window.dispatchEvent(
             new CustomEvent('forceLoadSection', {
-              detail: { id: targetId, scroll: true },
+              detail: { id: SECTION_ORDER[i] },
             }),
           )
         }
+      } else {
+        // Unknown / standalone section — just force-load it
+        window.dispatchEvent(
+          new CustomEvent('forceLoadSection', {
+            detail: { id: targetId },
+          }),
+        )
       }
+
+      scrollToSection(targetId)
     }
 
     document.addEventListener('click', handleNavClick)

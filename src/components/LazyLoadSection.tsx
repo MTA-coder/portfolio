@@ -29,7 +29,9 @@ const LazyLoadSection: React.FC<LazyLoadSectionProps> = ({
         setIsVisible(true)
         setHasLoaded(true)
         if (id) {
-          window.dispatchEvent(new CustomEvent('lazySectionLoaded', { detail: { id } }))
+          window.dispatchEvent(
+            new CustomEvent('lazySectionLoaded', { detail: { id } }),
+          )
         }
       }
     },
@@ -41,19 +43,13 @@ const LazyLoadSection: React.FC<LazyLoadSectionProps> = ({
     if (!id) return
     const forceHandler = (e: Event) => {
       const detailId = (e as CustomEvent<{ id: string }>).detail?.id
-      if (detailId === id) {
+      if (detailId === id && !hasLoaded) {
         setIsVisible(true)
         setHasLoaded(true)
-        if (id) {
-          window.dispatchEvent(new CustomEvent('lazySectionLoaded', { detail: { id } }))
-        }
-        // Allow React to render children before scrolling
-        requestAnimationFrame(() => {
-          const anchorEl = document.getElementById(id)
-          if (anchorEl) {
-            anchorEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        })
+        // Notify caller that this section has loaded; caller owns scrolling.
+        window.dispatchEvent(
+          new CustomEvent('lazySectionLoaded', { detail: { id } }),
+        )
       }
     }
     window.addEventListener('forceLoadSection', forceHandler as EventListener)
@@ -62,7 +58,7 @@ const LazyLoadSection: React.FC<LazyLoadSectionProps> = ({
         'forceLoadSection',
         forceHandler as EventListener,
       )
-  }, [id])
+  }, [id, hasLoaded])
 
   return (
     <motion.div
@@ -79,24 +75,15 @@ const LazyLoadSection: React.FC<LazyLoadSectionProps> = ({
       {!hasLoaded && id && (
         <div
           id={id}
-          className={`w-full ${
-            placeholderMinHeight
-              ? `min-h-[${placeholderMinHeight}px]`
-              : 'min-h-[120px]'
-          }`}
+          className="w-full"
+          style={{ minHeight: placeholderMinHeight }}
           aria-hidden="true"
         />
       )}
       {hasLoaded ? (
         children
       ) : !id ? (
-        <div
-          className={
-            placeholderMinHeight
-              ? `min-h-[${placeholderMinHeight}px]`
-              : 'min-h-[120px]'
-          }
-        />
+        <div style={{ minHeight: placeholderMinHeight }} />
       ) : null}
     </motion.div>
   )
