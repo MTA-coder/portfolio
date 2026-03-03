@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useOptimizedPerformance } from '@/hooks/useOptimizedPerformance'
 import TypewriterEffect from './TypewriterEffect'
-import OptimizedImage from '@/components/OptimizedImage'
+import ProfileAvatar from './ProfileAvatar'
 
 const OptimizedMobileHeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -47,7 +47,7 @@ const OptimizedMobileHeroSection = () => {
             animate={settings.animations ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: settings.animationDuration, delay: 0.1 }}
           >
-            <OptimizedProfileImage />
+            <ProfileAvatar size="sm" />
           </motion.div>
 
           {/* Text content - after picture on mobile */}
@@ -188,7 +188,7 @@ const OptimizedMobileHeroSection = () => {
             animate={settings.animations ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: settings.animationDuration, delay: 0.1 }}
           >
-            <OptimizedProfileImage />
+            <ProfileAvatar size="lg" />
           </motion.div>
         </div>
       </div>
@@ -210,43 +210,6 @@ const OptimizedMobileHeroSection = () => {
         </motion.a>
       </div>
     </section>
-  )
-}
-
-const OptimizedProfileImage = () => {
-  const { getOptimalSettings } = useOptimizedPerformance()
-  const settings = getOptimalSettings
-
-  return (
-    <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
-      {/* Main profile container - removed glow effects on mobile */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-tech-blue/20 via-tech-purple/20 to-tech-blue/20 shadow-2xl border border-tech-purple/30 flex items-center justify-center overflow-hidden p-1">
-        <div className="w-full h-full relative overflow-hidden rounded-full bg-secondary/90 p-1 border border-border">
-          <div className="w-full h-full rounded-full overflow-hidden">
-            <OptimizedImage
-              src="/assets/Mohammed Tawfeq Amiri Picture.png"
-              alt="Mohammed Tawfeq Amiri"
-              className="w-full h-full object-cover"
-              priority
-              withSkeleton
-              widths={[256, 384, 512, 640]}
-            />
-          </div>
-
-          {/* Overlay effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-tech-purple/10 to-tech-blue/5 opacity-70 mix-blend-overlay" />
-        </div>
-      </div>
-
-      {/* Simplified decorative rings */}
-      <div className="absolute inset-0 border border-dashed border-tech-purple/30 rounded-full" />
-      <div className="absolute inset-[-8px] border border-tech-blue/20 rounded-full" />
-
-      {/* Conditional glow effect - only on desktop with animations enabled */}
-      {settings.enableGlow && settings.animations && (
-        <div className="absolute inset-[-12px] border border-tech-purple/10 rounded-full shadow-[0_0_20px_rgba(155,135,245,0.2)]" />
-      )}
-    </div>
   )
 }
 

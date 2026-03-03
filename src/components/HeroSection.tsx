@@ -4,7 +4,7 @@ import { ArrowDown, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/use-mobile'
 import TypewriterEffect from './TypewriterEffect'
-import OptimizedImage from '@/components/OptimizedImage'
+import ProfileAvatar from './ProfileAvatar'
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -44,7 +44,7 @@ const HeroSection = () => {
           {/* For mobile, show the profile image first */}
           {isMobile && (
             <div ref={heroRef} className="flex-1 order-first">
-              <ProfileImageWithEffects />
+              <ProfileAvatar size="sm" />
             </div>
           )}
 
@@ -100,7 +100,7 @@ const HeroSection = () => {
           {/* For desktop, show the profile image after the text content */}
           {!isMobile && (
             <div ref={heroRef} className="flex-1">
-              <ProfileImageWithEffects />
+              <ProfileAvatar size="lg" />
             </div>
           )}
         </div>
@@ -117,37 +117,6 @@ const HeroSection = () => {
         </a>
       </div>
     </section>
-  )
-}
-
-// Simple profile image with minimal effects
-const ProfileImageWithEffects = () => {
-  return (
-    <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
-      {/* Profile image with subtle styling */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-tech-blue/30 via-tech-purple/30 to-tech-blue/30 shadow-xl border-2 border-tech-purple/20 flex items-center justify-center overflow-hidden p-1">
-        <div className="w-full h-full relative overflow-hidden rounded-full bg-secondary/80 p-1 border border-border">
-          <div className="w-full h-full rounded-full overflow-hidden">
-            <OptimizedImage
-              src="/assets/Mohammed Tawfeq Amiri Picture.png"
-              alt="Mohammed Tawfeq Amiri"
-              className="w-full h-full object-cover"
-              priority
-              withSkeleton
-              widths={[256, 384, 512, 768]}
-            />
-          </div>
-
-          {/* Inner glow effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-tech-purple/20 to-tech-blue/10 opacity-50 mix-blend-overlay" />
-        </div>
-      </div>
-
-      {/* Simple static rings */}
-      <div className="absolute inset-0 border-2 border-dashed border-tech-purple/40 rounded-full" />
-      <div className="absolute inset-[-10px] border border-tech-blue/30 rounded-full shadow-[0_0_15px_rgba(30,174,219,0.3)]" />
-      <div className="absolute inset-[-20px] border border-tech-purple/20 rounded-full" />
-    </div>
   )
 }
 
