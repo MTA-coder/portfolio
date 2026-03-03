@@ -188,7 +188,7 @@ const SkillsSection = () => {
           </h2>
           <div className="w-20 h-1 bg-tech-purple mx-auto mb-8"></div>
           <p className="text-muted-foreground">
-            With over 5 years of experience, I've developed expertise in a wide
+            With over 6 years of experience, I've developed expertise in a wide
             range of technologies across the full development stack.
           </p>
         </motion.div>

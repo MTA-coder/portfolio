@@ -176,7 +176,7 @@ const AboutSection = () => {
                 variants={storyVariants}
                 custom={1}
               >
-                With 5 years of experience in Informatics Engineering and 4
+                With 6 years of experience in Informatics Engineering and 4
                 years as a Full Stack Web Developer, I specialize in creating
                 seamless user experiences using Angular, .NET Core, Entity
                 Framework, Visual Basic, ASP.NET, and PHP/Laravel.

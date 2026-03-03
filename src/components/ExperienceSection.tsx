@@ -196,7 +196,7 @@ const ExperienceSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            5+ years of full-stack expertise spanning Angular, React, ASP.NET
+            6+ years of full-stack expertise spanning Angular, React, ASP.NET
             Core, Laravel & more—from freelance roots to AI-powered government
             systems. Discover the story behind every milestone and breakthrough.
           </motion.p>
