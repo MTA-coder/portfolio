@@ -243,7 +243,7 @@ const Projects = () => {
         <title>Projects | Portfolio</title>
         <link
           rel="canonical"
-          href="https://mta-coder.github.io/mta-digital-storyteller/projects"
+          href="https://mta-coder.github.io/portfolio/projects"
         />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta
@@ -260,7 +260,7 @@ const Projects = () => {
               itemListElement: filteredProjects.map((p, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
-                url: `https://mta-coder.github.io/mta-digital-storyteller/projects/${p.id}`,
+                url: `https://mta-coder.github.io/portfolio/projects/${p.id}`,
                 name: p.title,
                 description: p.description,
               })),
@@ -273,14 +273,13 @@ const Projects = () => {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Home',
-                  item: 'https://mta-coder.github.io/mta-digital-storyteller/',
+                  item: 'https://mta-coder.github.io/portfolio/',
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Projects',
-                  item:
-                    'https://mta-coder.github.io/mta-digital-storyteller/projects',
+                  item: 'https://mta-coder.github.io/portfolio/projects',
                 },
               ],
             },

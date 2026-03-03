@@ -8,9 +8,8 @@ const GlobalStructuredData: React.FC = () => {
       '@type': 'Person',
       name: 'Mohammed Tawfeq Amiri',
       jobTitle: 'Full Stack Developer',
-      url: 'https://mta-coder.github.io/mta-digital-storyteller/',
-      image:
-        'https://mta-coder.github.io/mta-digital-storyteller/android-chrome-512x512.png',
+      url: 'https://mta-coder.github.io/portfolio/',
+      image: 'https://mta-coder.github.io/portfolio/android-chrome-512x512.png',
       email: 'mohammed.tawfeq.amiri@gmail.com',
       address: {
         '@type': 'PostalAddress',
@@ -35,11 +34,10 @@ const GlobalStructuredData: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'Mohammed Tawfeq Amiri Portfolio',
-      url: 'https://mta-coder.github.io/mta-digital-storyteller/',
+      url: 'https://mta-coder.github.io/portfolio/',
       potentialAction: {
         '@type': 'SearchAction',
-        target:
-          'https://mta-coder.github.io/mta-digital-storyteller/?q={search_term_string}',
+        target: 'https://mta-coder.github.io/portfolio/?q={search_term_string}',
         'query-input': 'required name=search_term_string',
       },
     },

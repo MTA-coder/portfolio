@@ -102,7 +102,7 @@ const App = () => {
               href={
                 typeof window !== 'undefined'
                   ? window.location.href
-                  : 'https://mta-coder.github.io/mta-digital-storyteller/'
+                  : 'https://mta-coder.github.io/portfolio/'
               }
             />
             <meta
@@ -115,7 +115,7 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <BrowserRouter basename="/mta-digital-storyteller">
+            <BrowserRouter basename="/portfolio">
               {settings.enableHover && <OptimizedBubbleCursor />}
               <RouteMetrics />
               <RouteErrorBoundary>

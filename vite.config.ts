@@ -41,7 +41,7 @@ function rewritePublicPaths() {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/mta-digital-storyteller/',
+  base: '/portfolio/',
   server: {
     host: "::",
     port: 8080,
@@ -70,15 +70,15 @@ export default defineConfig(({ mode }) => ({
         theme_color: '#0b011e',
         background_color: '#0b011e',
         display: 'standalone',
-        start_url: '/mta-digital-storyteller/',
+        start_url: '/portfolio/',
         icons: [
-          { src: '/mta-digital-storyteller/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/mta-digital-storyteller/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
+          { src: '/portfolio/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/portfolio/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
         ]
       },
       workbox: {
         // Keep SPA fallback
-        navigateFallback: '/mta-digital-storyteller/index.html',
+        navigateFallback: '/portfolio/index.html',
         // Precache additional critical assets
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
         runtimeCaching: [

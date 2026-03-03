@@ -46,7 +46,7 @@ const Blog = () => {
           <title>Blog | Portfolio</title>
           <link
             rel="canonical"
-            href="https://mta-coder.github.io/mta-digital-storyteller/blog"
+            href="https://mta-coder.github.io/portfolio/blog"
           />
           <meta name="robots" content="index,follow,max-image-preview:large" />
           <meta
@@ -61,14 +61,14 @@ const Blog = () => {
               name: 'Engineering Blog',
               description:
                 'Technical articles and insights on full-stack engineering, performance, and architecture.',
-              url: 'https://mta-coder.github.io/mta-digital-storyteller/blog',
+              url: 'https://mta-coder.github.io/portfolio/blog',
               blogPost: blogPosts.slice(0, 10).map((p) => ({
                 '@type': 'BlogPosting',
                 headline: p.title,
                 description: p.excerpt,
                 datePublished: new Date(p.date).toISOString(),
                 image: p.image,
-                url: `https://mta-coder.github.io/mta-digital-storyteller/blog/${p.slug}`,
+                url: `https://mta-coder.github.io/portfolio/blog/${p.slug}`,
                 author: { '@type': 'Person', name: p.author.name },
               })),
             })}
@@ -82,8 +82,7 @@ const Blog = () => {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Blog',
-                  item:
-                    'https://mta-coder.github.io/mta-digital-storyteller/blog',
+                  item: 'https://mta-coder.github.io/portfolio/blog',
                 },
               ],
             })}
