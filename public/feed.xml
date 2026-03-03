@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mohammed Tawfeq Amiri — Blog</title>
+    <link>https://mta-coder.github.io/portfolio/blog</link>
+    <description>Thoughts, insights, and tutorials on web development, software engineering, and technology.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Mar 2026 21:02:29 GMT</lastBuildDate>
+    <atom:link href="https://mta-coder.github.io/portfolio/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Zone.js in Angular: Deep Dive into Its Evolution (Angular 16–19)</title>
+      <link>https://mta-coder.github.io/portfolio/blog/zone-js-angular-deep-dive</link>
+      <guid isPermaLink="true">https://mta-coder.github.io/portfolio/blog/zone-js-angular-deep-dive</guid>
+      <description>Explore how Angular has evolved its change detection mechanism from Zone.js dependency to Signal-based reactivity across Angular 16–19.</description>
+      <pubDate>Sat, 01 Mar 2025 20:00:00 GMT</pubDate>
+      <category>Angular</category>
+    </item>
+    <item>
+      <title>Revolutionize Your Responsive Web Design Testing with Responsively</title>
+      <link>https://mta-coder.github.io/portfolio/blog/responsively-responsive-design-testing</link>
+      <guid isPermaLink="true">https://mta-coder.github.io/portfolio/blog/responsively-responsive-design-testing</guid>
+      <description>Effortlessly test your website on multiple devices and resolutions with Responsively — an open-source Electron-based browser with dev tools, click/scroll mirroring &amp; batch screenshot export.</description>
+      <pubDate>Wed, 27 Sep 2023 20:00:00 GMT</pubDate>
+      <category>Tools</category>
+    </item>
+  </channel>
+</rss>

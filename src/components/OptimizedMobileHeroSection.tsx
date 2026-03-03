@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { ArrowDown, Mail } from 'lucide-react'
+import { ArrowDown, Mail, Download } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useOptimizedPerformance } from '@/hooks/useOptimizedPerformance'
@@ -111,6 +111,21 @@ const OptimizedMobileHeroSection = () => {
               >
                 <Mail size={18} /> Contact Me
               </Button>
+              <a
+                href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  className="text-tech-purple hover:bg-tech-purple/10 flex items-center gap-2 w-full sm:w-auto min-h-[48px] px-8"
+                >
+                  <Download size={18} /> Resume
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>

@@ -75,6 +75,11 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 className="bg-tech-purple hover:bg-tech-purple/90 text-white"
+                onClick={() =>
+                  document
+                    .getElementById('projects')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
               >
                 View Projects
               </Button>
@@ -82,6 +87,11 @@ const HeroSection = () => {
                 size="lg"
                 variant="outline"
                 className="border-tech-purple text-tech-purple hover:bg-tech-purple/10 flex items-center gap-2"
+                onClick={() =>
+                  document
+                    .getElementById('contact')
+                    ?.scrollIntoView({ behavior: 'smooth' })
+                }
               >
                 <Mail size={18} /> Contact Me
               </Button>

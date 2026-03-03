@@ -6,6 +6,8 @@ import { imagetools } from 'vite-imagetools';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { VitePWA } from 'vite-plugin-pwa';
 
+/// <reference types="vitest" />
+
 /**
  * Vite plugin that rewrites bare `/assets/`, `/fonts/`, `/android-chrome-*`,
  * `/favicon*`, `/apple-touch-*`, `/placeholder*` string-literal references
@@ -142,5 +144,11 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
   },
 }));

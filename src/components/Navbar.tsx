@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -18,6 +18,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +51,12 @@ const Navbar = () => {
   }, [])
 
   const toggleMobileMenu = () => {
+    const willClose = mobileMenuOpen
     setMobileMenuOpen(!mobileMenuOpen)
+    if (willClose) {
+      // Return focus to the menu button when closing
+      requestAnimationFrame(() => menuButtonRef.current?.focus())
+    }
   }
 
   const navItems = [
@@ -172,10 +178,18 @@ const Navbar = () => {
             <ThemeToggle size={18} />
 
             <motion.button
+              ref={menuButtonRef}
               className="text-foreground relative z-[60] p-2"
               onClick={toggleMobileMenu}
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.2 }}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={
+                mobileMenuOpen
+                  ? 'Close navigation menu'
+                  : 'Open navigation menu'
+              }
             >
               <motion.div
                 animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
@@ -193,6 +207,7 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <motion.div
             className="md:hidden fixed inset-0 z-40 bg-black/80 backdrop-blur-lg"
+            id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -217,7 +232,12 @@ const Navbar = () => {
                         ? 'bg-tech-purple/20 text-tech-purple border border-tech-purple/30'
                         : 'hover:bg-tech-purple/10 border border-transparent',
                     )}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      requestAnimationFrame(() =>
+                        menuButtonRef.current?.focus(),
+                      )
+                    }}
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}

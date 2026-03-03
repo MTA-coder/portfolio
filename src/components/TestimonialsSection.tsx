@@ -151,7 +151,7 @@ const TestimonialsSection = () => {
                     {/* Replaced raw img with OptimizedImage for responsive AVIF/WebP (Unsplash) + skeleton */}
                     <OptimizedImage
                       src={testimonial.avatar}
-                      alt={testimonial.name}
+                      alt={`Portrait of ${testimonial.name}, ${testimonial.role} at ${testimonial.company}`}
                       className="w-full h-full object-cover rounded-full"
                       widths={[48, 72, 96, 128]}
                       withSkeleton

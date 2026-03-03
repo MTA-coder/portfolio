@@ -348,18 +348,22 @@ const StoryTimelineItem: React.FC<StoryTimelineItemProps> = ({
         {/* Enhanced description with better formatting */}
         <ul className="space-y-2 md:space-y-3">
           {item.description.map((desc, i) => (
-            <motion.li
+            <li
               key={i}
-              className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-muted-foreground group"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
+              className="text-xs md:text-sm text-muted-foreground group"
             >
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gradient-to-r from-tech-purple to-tech-blue mt-1.5 md:mt-2 flex-shrink-0 group-hover:scale-125 transition-transform" />
-              <span className="leading-relaxed group-hover:text-foreground transition-colors">
-                {desc}
-              </span>
-            </motion.li>
+              <motion.div
+                className="flex items-start gap-2 md:gap-3"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gradient-to-r from-tech-purple to-tech-blue mt-1.5 md:mt-2 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                <span className="leading-relaxed group-hover:text-foreground transition-colors">
+                  {desc}
+                </span>
+              </motion.div>
+            </li>
           ))}
         </ul>
 

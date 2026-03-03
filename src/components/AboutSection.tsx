@@ -82,15 +82,6 @@ const AboutSection = () => {
     },
   }
 
-  // Floating bubbles animation
-  const floatingBubbles = Array.from({ length: 0 }).map((_, i) => ({
-    x: Math.random() * 100 - 50,
-    y: Math.random() * 60 - 30,
-    duration: Math.random() * 3 + 5,
-    delay: Math.random() * 2,
-    size: Math.random() * 40 + 20,
-  }))
-
   return (
     <motion.section
       id="about"
@@ -102,33 +93,6 @@ const AboutSection = () => {
       variants={containerVariants}
       style={{ opacity }}
     >
-      {/* Floating background bubbles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {floatingBubbles.map((bubble, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-tech-purple/10"
-            style={{
-              width: bubble.size,
-              height: bubble.size,
-              left: `${50 + bubble.x}%`,
-              top: `${50 + bubble.y}%`,
-            }}
-            animate={{
-              x: [0, 20, 0, -20, 0],
-              y: [0, -20, 0, 20, 0],
-              scale: [1, 1.1, 1, 0.9, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: bubble.duration,
-              repeat: Infinity,
-              delay: bubble.delay,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"

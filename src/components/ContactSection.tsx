@@ -90,7 +90,7 @@ const GeometricSocialIcon = ({
           rotateY: rotateY,
         }}
         whileTap={{ scale: 0.9 }}
-        className="block w-16 h-16 preserve-3d flex flex-col items-center"
+        className="w-16 h-16 preserve-3d flex flex-col items-center"
       >
         <motion.div
           className={`relative w-16 h-16 bg-${color}/10 backdrop-blur-sm rounded-lg border border-${color}/30

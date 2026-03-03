@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import AnimatedCounter from './AnimatedCounter'
-import { Code, Users, Award, Clock, Coffee, MapPin } from 'lucide-react'
+import { Code, Users, Award, Clock, Terminal, MapPin } from 'lucide-react'
 import OptimizedDigitalGlobe from './OptimizedDigitalGlobe'
 
 interface Stat {
@@ -30,17 +30,17 @@ const StatsSection = () => {
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      value: 5,
+      value: 6,
       suffix: '+',
       label: 'Years Experience',
       description: 'Professional development experience',
     },
     {
-      icon: <Coffee className="w-8 h-8" />,
-      value: 2847,
-      suffix: '',
-      label: 'Coffee Cups',
-      description: 'Fuel for coding marathons and late nights',
+      icon: <Terminal className="w-8 h-8" />,
+      value: 2.3,
+      suffix: 'M+',
+      label: 'Lines of Code',
+      description: 'Clean, maintainable code shipped to production',
     },
     {
       icon: <Award className="w-8 h-8" />,

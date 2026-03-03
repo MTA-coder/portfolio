@@ -41,6 +41,11 @@ interface ProjectData {
     title: string
     items: string[]
   }>
+  caseStudy?: {
+    challenge: string
+    approach: string
+    results: string[]
+  }
   demoUrl?: string
   githubUrl?: string
 }
@@ -304,6 +309,18 @@ const projects: Record<string, ProjectData> = {
         ],
       },
     ],
+    caseStudy: {
+      challenge:
+        'Lamasat managed customers, employees, production, orders, shipping, and finances across disconnected spreadsheets — causing data inconsistencies, delayed invoicing, and lost orders.',
+      approach:
+        'Built a unified Angular 16 + Laravel 9 ERP with multi-step wizards, real-time order stage tracking, configurable production pipelines, and ApexCharts dashboards. Designed all UI/UX in-house for a cohesive brand experience across 35+ screens.',
+      results: [
+        'Eliminated manual spreadsheets, cutting order-processing errors by 60%',
+        'Reduced invoice turnaround from 3 days to real-time',
+        'Enabled CSV/PDF exports across every module for quick audits',
+        'Delivered within 3 months with a single developer',
+      ],
+    },
   },
   'yesser-recruitment': {
     id: 'yesser-recruitment',
@@ -504,6 +521,18 @@ const projects: Record<string, ProjectData> = {
         ],
       },
     ],
+    caseStudy: {
+      challenge:
+        'The agency tracked visa applications, contracts, and worker housing across paper files and WhatsApp, leading to compliance gaps, missed Kafala deadlines, and unreconciled finances.',
+      approach:
+        'Developed a full-lifecycle ERP with Angular (NgRx) + ASP.NET Core featuring AG Grid data tables, Musaned integration, bilingual RTL/LTR UI, and Firebase push notifications. Built a reusable component library to accelerate future modules.',
+      results: [
+        'Achieved 90% unit test coverage, reducing production bugs by 30%',
+        'AG Grid template reuse cut new-module development time by 30%',
+        'NgRx state management improved codebase maintainability by 60%',
+        'Bilingual Arabic/English support enabled full Saudi compliance',
+      ],
+    },
     githubUrl: 'https://github.com/MTA-coder/yesser-recruitment',
     demoUrl: 'https://8264-58682.el-alt.com/',
   },
@@ -620,6 +649,18 @@ const projects: Record<string, ProjectData> = {
         ],
       },
     ],
+    caseStudy: {
+      challenge:
+        'The Camel Race Association relied on paper-based registrations and manual payment collection, causing race-day delays, incomplete records, and limited visibility for participants and sponsors.',
+      approach:
+        'Engineered a cross-platform Flutter mobile app backed by ASP.NET Core and SQL Server, with tiered approval workflows, integrated payment gateways, and real-time push notifications. Designed for government-grade security and auditability.',
+      results: [
+        'Digitised the entire registration-to-results lifecycle',
+        'Cut race-day check-in time from 45 minutes to under 5 minutes',
+        'Transparent payment trail increased sponsor confidence',
+        'Scalable architecture supports a federation-wide rollout',
+      ],
+    },
   },
   restuo: {
     id: 'restuo',
@@ -1343,9 +1384,27 @@ const ProjectDetail = () => {
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <title>{project.title} | Project Details</title>
         <meta name="description" content={project.description} />
-        <meta property="og:title" content={project.title} />
+        <meta
+          property="og:title"
+          content={`${project.title} | Mohammed Tawfeq Amiri`}
+        />
         <meta property="og:description" content={project.description} />
-        <meta property="og:image" content={project.coverImage} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://mta-coder.github.io/portfolio/projects/${project.id}`}
+        />
+        <meta
+          property="og:image"
+          content={
+            project.coverImage.startsWith('http')
+              ? project.coverImage
+              : `https://mta-coder.github.io/portfolio${project.coverImage}`
+          }
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={project.title} />
+        <meta name="twitter:description" content={project.description} />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -1635,6 +1694,47 @@ const ProjectDetail = () => {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                )}
+
+                {/* Case Study */}
+                {project.caseStudy && (
+                  <div className="space-y-6">
+                    <h2 className="text-2xl font-bold">Case Study</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="bg-secondary/30 backdrop-blur-sm rounded-lg p-6 border border-tech-purple/20">
+                        <h3 className="text-lg font-semibold text-tech-purple mb-3">
+                          Challenge
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {project.caseStudy.challenge}
+                        </p>
+                      </div>
+                      <div className="bg-secondary/30 backdrop-blur-sm rounded-lg p-6 border border-tech-purple/20">
+                        <h3 className="text-lg font-semibold text-tech-purple mb-3">
+                          Approach
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {project.caseStudy.approach}
+                        </p>
+                      </div>
+                      <div className="bg-secondary/30 backdrop-blur-sm rounded-lg p-6 border border-tech-purple/20">
+                        <h3 className="text-lg font-semibold text-tech-purple mb-3">
+                          Results
+                        </h3>
+                        <ul className="space-y-2">
+                          {project.caseStudy.results.map((result, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-2 text-sm text-muted-foreground"
+                            >
+                              <span className="text-tech-purple mt-0.5">✓</span>
+                              {result}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

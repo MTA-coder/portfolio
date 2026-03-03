@@ -1,47 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SyriaFlag from './SyriaFlag'
-
-interface CountryData {
-  name: string
-  flag: string
-  lat: number
-  lng: number
-  capital?: string
-}
-
-/** Returns responsive scaling factors based on container width */
-const getResponsiveConfig = (containerWidth: number) => {
-  const isMobile = containerWidth < 480
-  const isTablet = containerWidth >= 480 && containerWidth < 768
-  const scale = containerWidth / 500 // 500 is the desktop reference size
-
-  return {
-    isMobile,
-    isTablet,
-    scale: Math.min(scale, 1),
-    globeRadius: isMobile ? 2.4 : isTablet ? 2.6 : 2.8,
-    latStep: isMobile ? 20 : 10,
-    lngStep: isMobile ? 20 : 10,
-    latSegments: isMobile ? 32 : 64,
-    latPointInterval: isMobile ? 16 : 8,
-    lngLatStep: isMobile ? 12 : 6,
-    lngPointInterval: isMobile ? 30 : 15,
-    mainLineOpacity: isMobile ? 0.5 : 0.8,
-    subLineOpacity: isMobile ? 0.3 : 0.5,
-    mainGlowOpacity: isMobile ? 0.2 : 0.4,
-    subGlowOpacity: isMobile ? 0.1 : 0.2,
-    connectionPointSkip: isMobile ? 5 : 3,
-    pointSize: isMobile ? 0.015 : 0.02,
-    markerSize: isMobile ? 0.06 : 0.08,
-    markerGlowSize: isMobile ? 0.09 : 0.12,
-    particleCount: isMobile ? 8 : 20,
-    particleSize: isMobile ? 0.01 : 0.015,
-    networkConnections: isMobile ? 8 : 15,
-    cameraZ: isMobile ? 6.5 : 6,
-    markerSegments: isMobile ? 8 : 16,
-  }
-}
+import { countries } from './globe/countryData'
+import type { CountryData } from './globe/countryData'
+import { getResponsiveConfig } from './globe/globeConfig'
 
 const DigitalGlobe = () => {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -55,81 +17,6 @@ const DigitalGlobe = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hoveredCountry, setHoveredCountry] = useState<CountryData | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-  // Country data with correct flags
-  const countries: CountryData[] = [
-    {
-      name: 'Syria',
-      flag: 'SY',
-      lat: 34.8021,
-      lng: 38.9968,
-      capital: 'Damascus',
-    },
-    {
-      name: 'Germany',
-      flag: '🇩🇪',
-      lat: 51.1657,
-      lng: 10.4515,
-      capital: 'Berlin',
-    },
-    {
-      name: 'Finland',
-      flag: '🇫🇮',
-      lat: 61.9241,
-      lng: 25.7482,
-      capital: 'Helsinki',
-    },
-    {
-      name: 'UAE',
-      flag: '🇦🇪',
-      lat: 23.4241,
-      lng: 53.8478,
-      capital: 'Abu Dhabi',
-    },
-    {
-      name: 'Saudi Arabia',
-      flag: '🇸🇦',
-      lat: 23.8859,
-      lng: 45.0792,
-      capital: 'Riyadh',
-    },
-    {
-      name: 'Malaysia',
-      flag: '🇲🇾',
-      lat: 4.2105,
-      lng: 101.9758,
-      capital: 'Kuala Lumpur',
-    },
-    { name: 'France', flag: '🇫🇷', lat: 46.2276, lng: 2.2137, capital: 'Paris' },
-    {
-      name: 'Jordan',
-      flag: '🇯🇴',
-      lat: 30.5852,
-      lng: 36.2384,
-      capital: 'Amman',
-    },
-    {
-      name: 'Japan',
-      flag: '🇯🇵',
-      lat: 36.2048,
-      lng: 138.2529,
-      capital: 'Tokyo',
-    },
-    {
-      name: 'Turkey',
-      flag: '🇹🇷',
-      lat: 38.9637,
-      lng: 35.2433,
-      capital: 'Ankara',
-    },
-    {
-      name: 'Iraq',
-      flag: '🇮🇶',
-      lat: 33.2232,
-      lng: 43.6793,
-      capital: 'Baghdad',
-    },
-  ]
 
   useEffect(() => {
     if (!mountRef.current) return

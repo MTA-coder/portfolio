@@ -109,7 +109,6 @@ const App = () => {
               name="robots"
               content="index,follow,max-image-preview:large"
             />
-            <meta property="og:image" content="/placeholder.svg" />
           </Helmet>
           <GlobalStructuredData />
           <TooltipProvider>

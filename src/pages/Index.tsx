@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react'
+import { MotionConfig } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import OptimizedMobileHeroSection from '@/components/OptimizedMobileHeroSection'
 import AnimatedPage from '@/components/AnimatedPage'
@@ -135,145 +136,197 @@ const Index = () => {
 
   return (
     <ThemeProvider>
-      <OptimizedTouchInteractions>
-        <AnimatedPage>
-          <div className="flex flex-col min-h-screen relative overflow-hidden">
-            <Helmet>
-              <title>Mohammed Tawfeq Amiri | Portfolio</title>
-              <link
-                rel="canonical"
-                href="https://mta-coder.github.io/portfolio/"
-              />
-              <meta
-                name="robots"
-                content="index,follow,max-image-preview:large"
-              />
-              <link
-                rel="preload"
-                as="font"
-                href="/fonts/Inter-Variable.woff2"
-                type="font/woff2"
-                crossOrigin="anonymous"
-              />
-              <meta
-                name="description"
-                content="Full-stack engineer portfolio: enterprise systems, SaaS platforms, AI integrations, high-performance web apps."
-              />
-              <meta
-                property="og:title"
-                content="Mohammed Tawfeq Amiri | Portfolio"
-              />
-              <meta
-                property="og:description"
-                content="Showcasing enterprise software, SaaS, AI integration and high-performance web projects."
-              />
-              <meta property="og:type" content="website" />
-              <meta
-                property="og:url"
-                content={
-                  typeof window !== 'undefined' ? window.location.href : ''
-                }
-              />
-              <meta
-                property="og:image"
-                content="https://mta-coder.github.io/portfolio/og-image.png"
-              />
-              <meta property="og:image:width" content="1200" />
-              <meta property="og:image:height" content="630" />
-              <meta property="og:image:type" content="image/png" />
-              <meta
-                property="og:image:alt"
-                content="Mohammed Tawfeq Amiri — Full Stack Developer"
-              />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta
-                name="twitter:image"
-                content="https://mta-coder.github.io/portfolio/og-image.png"
-              />
-              <script type="application/ld+json">
-                {JSON.stringify([
-                  {
-                    '@context': 'https://schema.org',
-                    '@type': 'Person',
-                    name: 'Mohammed Tawfeq Amiri',
-                    jobTitle: 'Full Stack Engineer',
-                    image:
-                      'https://mta-coder.github.io/portfolio/profile-seo.png',
-                    url: 'https://mta-coder.github.io/portfolio/',
-                    sameAs: [
-                      'https://www.linkedin.com/in/mohammed-tawfeq-amiri',
-                      'https://github.com/MTA-coder',
-                    ],
-                  },
-                  {
-                    '@context': 'https://schema.org',
-                    '@type': 'WebSite',
-                    name: 'Mohammed Tawfeq Amiri Portfolio',
-                    url: 'https://mta-coder.github.io/portfolio/',
-                    potentialAction: {
-                      '@type': 'SearchAction',
-                      target:
-                        'https://mta-coder.github.io/portfolio/?q={search_term_string}',
-                      'query-input': 'required name=search_term_string',
+      <MotionConfig reducedMotion={settings.reducedMotion ? 'always' : 'user'}>
+        <OptimizedTouchInteractions>
+          <AnimatedPage>
+            <div className="flex flex-col min-h-screen relative overflow-hidden">
+              <Helmet>
+                <title>Mohammed Tawfeq Amiri | Portfolio</title>
+                <link
+                  rel="canonical"
+                  href="https://mta-coder.github.io/portfolio/"
+                />
+                <meta
+                  name="robots"
+                  content="index,follow,max-image-preview:large"
+                />
+                <link
+                  rel="preload"
+                  as="font"
+                  href="/fonts/Inter-Variable.woff2"
+                  type="font/woff2"
+                  crossOrigin="anonymous"
+                />
+                <meta
+                  name="description"
+                  content="Full-stack engineer portfolio: enterprise systems, SaaS platforms, AI integrations, high-performance web apps."
+                />
+                <meta
+                  property="og:title"
+                  content="Mohammed Tawfeq Amiri | Portfolio"
+                />
+                <meta
+                  property="og:description"
+                  content="Showcasing enterprise software, SaaS, AI integration and high-performance web projects."
+                />
+                <meta property="og:type" content="website" />
+                <meta
+                  property="og:url"
+                  content={
+                    typeof window !== 'undefined' ? window.location.href : ''
+                  }
+                />
+                <meta
+                  property="og:image"
+                  content="https://mta-coder.github.io/portfolio/og-image.png"
+                />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/png" />
+                <meta
+                  property="og:image:alt"
+                  content="Mohammed Tawfeq Amiri — Full Stack Developer"
+                />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                  name="twitter:image"
+                  content="https://mta-coder.github.io/portfolio/og-image.png"
+                />
+                <script type="application/ld+json">
+                  {JSON.stringify([
+                    {
+                      '@context': 'https://schema.org',
+                      '@type': 'Person',
+                      name: 'Mohammed Tawfeq Amiri',
+                      jobTitle: 'Full Stack Engineer',
+                      image:
+                        'https://mta-coder.github.io/portfolio/profile-seo.png',
+                      url: 'https://mta-coder.github.io/portfolio/',
+                      sameAs: [
+                        'https://www.linkedin.com/in/mohammed-tawfeq-amiri',
+                        'https://github.com/MTA-coder',
+                      ],
                     },
-                  },
-                ])}
-              </script>
-            </Helmet>
-            {/* Conditional effects based on performance settings */}
-            <Navbar />
-            {settings.animations && <PerformantBackground />}
+                    {
+                      '@context': 'https://schema.org',
+                      '@type': 'WebSite',
+                      name: 'Mohammed Tawfeq Amiri Portfolio',
+                      url: 'https://mta-coder.github.io/portfolio/',
+                      potentialAction: {
+                        '@type': 'SearchAction',
+                        target:
+                          'https://mta-coder.github.io/portfolio/?q={search_term_string}',
+                        'query-input': 'required name=search_term_string',
+                      },
+                    },
+                    {
+                      '@context': 'https://schema.org',
+                      '@type': 'ItemList',
+                      name: 'Portfolio Projects',
+                      itemListElement: [
+                        'lamasat-erp',
+                        'yesser-recruitment',
+                        'smart-race-application',
+                        'restuo',
+                        'nova-tech',
+                        'issan-mosque-dmk',
+                        'pro-decor',
+                      ].map((id, i) => ({
+                        '@type': 'ListItem',
+                        position: i + 1,
+                        url: `https://mta-coder.github.io/portfolio/projects/${id}`,
+                      })),
+                    },
+                    {
+                      '@context': 'https://schema.org',
+                      '@type': 'Blog',
+                      name: 'Mohammed Tawfeq Amiri — Blog',
+                      url: 'https://mta-coder.github.io/portfolio/blog',
+                      blogPost: [
+                        {
+                          '@type': 'BlogPosting',
+                          headline:
+                            'Zone.js in Angular: Deep Dive into Its Evolution (Angular 16–19)',
+                          datePublished: '2025-03-02',
+                          url:
+                            'https://mta-coder.github.io/portfolio/blog/zone-js-angular-deep-dive',
+                          author: {
+                            '@type': 'Person',
+                            name: 'Mohammed Tawfeq Amiri',
+                          },
+                        },
+                        {
+                          '@type': 'BlogPosting',
+                          headline:
+                            'Revolutionize Your Responsive Web Design Testing with Responsively',
+                          datePublished: '2023-09-28',
+                          url:
+                            'https://mta-coder.github.io/portfolio/blog/responsively-responsive-design-testing',
+                          author: {
+                            '@type': 'Person',
+                            name: 'Mohammed Tawfeq Amiri',
+                          },
+                        },
+                      ],
+                    },
+                  ])}
+                </script>
+              </Helmet>
+              {/* Conditional effects based on performance settings */}
+              <Navbar />
+              {settings.animations && <PerformantBackground />}
 
-            <main className="flex-grow relative z-10">
-              <OptimizedMobileHeroSection />
-              <StatsSection />
+              <main className="flex-grow relative z-10">
+                <OptimizedMobileHeroSection />
+                <StatsSection />
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="about">
-                  <AboutSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="about">
+                    <AboutSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="skills">
-                  <SkillsSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="skills">
+                    <SkillsSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="experience">
-                  <ExperienceSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="experience">
+                    <ExperienceSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="projects">
-                  <ProjectsSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="projects">
+                    <ProjectsSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="testimonials">
-                  <TestimonialsSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="testimonials">
+                    <TestimonialsSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="blog">
-                  <BlogSection />
-                </LazyLoadSection>
-              </Suspense>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="blog">
+                    <BlogSection />
+                  </LazyLoadSection>
+                </Suspense>
 
-              <Suspense fallback={<OptimizedSkeleton />}>
-                <LazyLoadSection id="contact">
-                  <ContactSection />
-                </LazyLoadSection>
-              </Suspense>
-            </main>
-            <Footer />
-          </div>
-        </AnimatedPage>
-      </OptimizedTouchInteractions>
+                <Suspense fallback={<OptimizedSkeleton />}>
+                  <LazyLoadSection id="contact">
+                    <ContactSection />
+                  </LazyLoadSection>
+                </Suspense>
+              </main>
+              <Footer />
+            </div>
+          </AnimatedPage>
+        </OptimizedTouchInteractions>
+      </MotionConfig>
     </ThemeProvider>
   )
 }

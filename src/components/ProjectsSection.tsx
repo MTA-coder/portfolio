@@ -229,7 +229,9 @@ const ProjectsSection = () => {
                 <div className="h-48 overflow-hidden relative">
                   <OptimizedImage
                     src={project.image}
-                    alt={project.title}
+                    alt={`Screenshot of ${
+                      project.title
+                    } — ${project.description.slice(0, 80)}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   {project.featured && (
@@ -243,7 +245,7 @@ const ProjectsSection = () => {
                     <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full overflow-hidden border-2 border-border">
                       <OptimizedImage
                         src={project.logo}
-                        alt="Client logo"
+                        alt={`${project.title} client logo`}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -280,7 +282,7 @@ const ProjectsSection = () => {
                   {/* Links row */}
                   <div className="flex items-center justify-between mt-auto">
                     <div className="flex gap-3">
-                      {project.githubUrl && (
+                      {project.githubUrl && project.githubUrl !== '#' && (
                         <a
                           href={project.githubUrl}
                           className="text-muted-foreground hover:text-tech-purple"
@@ -292,7 +294,7 @@ const ProjectsSection = () => {
                           <Github size={18} />
                         </a>
                       )}
-                      {project.demoUrl && (
+                      {project.demoUrl && project.demoUrl !== '#' && (
                         <a
                           href={project.demoUrl}
                           className="text-muted-foreground hover:text-tech-purple"

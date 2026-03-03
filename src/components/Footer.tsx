@@ -98,12 +98,9 @@ const Footer = () => {
                   'Database Design',
                 ].map((item) => (
                   <li key={item}>
-                    <a
-                      href="#about"
-                      className="text-sm text-muted-foreground hover:text-tech-purple transition-colors"
-                    >
+                    <span className="text-sm text-muted-foreground">
                       {item}
-                    </a>
+                    </span>
                   </li>
                 ))}
               </ul>

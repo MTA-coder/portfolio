@@ -235,16 +235,17 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
         {/* Description */}
         <ul className="space-y-2">
           {item.description.map((desc, i) => (
-            <motion.li
-              key={i}
-              className="flex items-start gap-3 text-sm text-muted-foreground"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-tech-purple mt-2 flex-shrink-0" />
-              <span className="leading-relaxed">{desc}</span>
-            </motion.li>
+            <li key={i} className="text-sm text-muted-foreground">
+              <motion.div
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-tech-purple mt-2 flex-shrink-0" />
+                <span className="leading-relaxed">{desc}</span>
+              </motion.div>
+            </li>
           ))}
         </ul>
 

@@ -265,16 +265,17 @@ const ResponsiveTimelineItem: React.FC<ResponsiveTimelineItemProps> = ({
         {/* Description */}
         <ul className="space-y-2">
           {item.description.map((desc, i) => (
-            <motion.li
-              key={i}
-              className="flex items-start gap-3 text-sm text-muted-foreground"
-              initial={settings.animations ? { opacity: 0, x: -10 } : {}}
-              whileInView={settings.animations ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: i * 0.1 }}
-            >
-              <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-tech-purple mt-2 flex-shrink-0" />
-              <span className="leading-relaxed">{desc}</span>
-            </motion.li>
+            <li key={i} className="text-sm text-muted-foreground">
+              <motion.div
+                className="flex items-start gap-3"
+                initial={settings.animations ? { opacity: 0, x: -10 } : {}}
+                whileInView={settings.animations ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-tech-purple mt-2 flex-shrink-0" />
+                <span className="leading-relaxed">{desc}</span>
+              </motion.div>
+            </li>
           ))}
         </ul>
       </motion.div>

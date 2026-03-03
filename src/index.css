@@ -15,7 +15,7 @@
     --secondary: 240 10% 20%;
     --secondary-foreground: 0 0% 95%;
     --muted: 240 5% 25%;
-    --muted-foreground: 240 5% 65%;
+    --muted-foreground: 240 5% 75%;
     --accent: 248 90% 65%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
@@ -38,7 +38,7 @@
     --secondary: 220 20% 94%;
     --secondary-foreground: 222 47% 11%;
     --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 40%;
+    --muted-foreground: 220 10% 46%;
     --accent: 248 80% 58%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
@@ -430,5 +430,17 @@
   .bg-card {
     transition: background-color 0.4s ease, color 0.3s ease,
       border-color 0.3s ease;
+  }
+}
+
+/* Respect system-level reduced motion preference for CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
