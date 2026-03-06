@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useClarity } from '@/hooks/useClarity'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft,
@@ -38,6 +39,14 @@ const BlogDetail = () => {
       }
 
       setPost(currentPost)
+
+      // Track which blog post the visitor is reading
+      if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+        window.clarity('set', 'blogSlug', currentPost.slug)
+        window.clarity('set', 'blogTitle', currentPost.title)
+        window.clarity('set', 'blogCategory', currentPost.category)
+        window.clarity('event', 'blog_view')
+      }
 
       // Set related posts (same category, but not the current post)
       const related = blogPosts

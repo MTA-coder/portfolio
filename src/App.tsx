@@ -12,6 +12,7 @@ import { useRoutePrefetch } from '@/hooks/useRoutePrefetch'
 import { useGlobalAnimationControl } from '@/hooks/useGlobalAnimationControl'
 import GlobalStructuredData from '@/components/GlobalStructuredData'
 import OptimizedBubbleCursor from '@/components/OptimizedBubbleCursor'
+import ClarityRouteTracker from '@/components/ClarityRouteTracker'
 import { useOptimizedPerformance } from '@/hooks/useOptimizedPerformance'
 
 // Lazily loaded route pages
@@ -75,6 +76,12 @@ class RouteErrorBoundary extends React.Component<
   }
   componentDidCatch(error: unknown, info: React.ErrorInfo) {
     console.error('Route error boundary', error, info)
+    // Tag the Clarity session so you can filter error recordings in the dashboard
+    if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+      window.clarity('set', 'error', 'route_error_boundary')
+      window.clarity('event', 'route_error')
+      window.clarity('upgrade', 'route_error_boundary')
+    }
   }
   render() {
     if (this.state.hasError) {
@@ -116,6 +123,7 @@ const App = () => {
             <Sonner />
             <BrowserRouter basename="/portfolio">
               {settings.enableHover && <OptimizedBubbleCursor />}
+              <ClarityRouteTracker />
               <RouteMetrics />
               <RouteErrorBoundary>
                 <Suspense

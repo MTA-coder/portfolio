@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useClarity } from '@/hooks/useClarity'
 
 // 3D Social Media Icon component
 const GeometricSocialIcon = ({
@@ -183,6 +184,12 @@ const ContactSection = () => {
     })
 
     window.location.href = mailto
+
+    // Track the contact form submission in Clarity
+    if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+      window.clarity('event', 'contact_form_submit')
+      window.clarity('set', 'contactSubject', subject)
+    }
 
     setFormData({
       name: '',

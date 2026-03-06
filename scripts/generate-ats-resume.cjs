@@ -122,7 +122,7 @@ const resumeHTML = `<!DOCTYPE html>
   <div class="contact-row">
     <span>Abu Dhabi, UAE</span>
     <span>|</span>
-    <span>+971 50 594 1856</span>
+    <span>(971) 50 594 1856</span>
     <span>|</span>
     <span>mohammed.tawfeq.amiri@gmail.com</span>
     <span>|</span>

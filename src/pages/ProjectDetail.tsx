@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useClarity } from '@/hooks/useClarity'
 import {
   ArrowLeft,
   ExternalLink,
@@ -1277,9 +1278,17 @@ const ProjectDetail = () => {
   const project = id ? projects[id] : undefined
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
+  const { setTag, trackEvent } = useClarity()
+
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+    // Track which project the visitor is viewing
+    if (project) {
+      setTag('projectId', project.id)
+      setTag('projectName', project.title)
+      trackEvent('project_view')
+    }
+  }, [project, setTag, trackEvent])
 
   if (!project) {
     return (
