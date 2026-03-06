@@ -13,6 +13,7 @@ import { useGlobalAnimationControl } from '@/hooks/useGlobalAnimationControl'
 import GlobalStructuredData from '@/components/GlobalStructuredData'
 import OptimizedBubbleCursor from '@/components/OptimizedBubbleCursor'
 import ClarityRouteTracker from '@/components/ClarityRouteTracker'
+import CookieConsent from '@/components/CookieConsent'
 import { useOptimizedPerformance } from '@/hooks/useOptimizedPerformance'
 
 // Lazily loaded route pages
@@ -121,6 +122,7 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
+            <CookieConsent />
             <BrowserRouter basename="/portfolio">
               {settings.enableHover && <OptimizedBubbleCursor />}
               <ClarityRouteTracker />

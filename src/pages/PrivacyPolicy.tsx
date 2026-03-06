@@ -97,7 +97,51 @@ const PrivacyPolicy = () => {
           </section>
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-3">
-              6. Contact
+              6. Analytics &amp; Cookies
+            </h2>
+            <p>
+              This site uses{' '}
+              <a
+                href="https://clarity.microsoft.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-tech-purple underline"
+              >
+                Microsoft Clarity
+              </a>{' '}
+              to collect anonymous usage data such as session recordings,
+              heatmaps, and scroll-depth analytics. Clarity operates in{' '}
+              <strong>cookieless mode by default</strong> — cookies are only
+              enabled once you click &quot;Accept Cookies&quot; in the consent
+              banner.
+            </p>
+            <p className="mt-3">
+              When cookies are enabled, Clarity can link multiple page views
+              within a single visit into a unified session. If you deny cookies,
+              Clarity will still function but each page view is treated
+              independently.
+            </p>
+            <p className="mt-3">
+              You can change your cookie preference at any time by clicking the
+              &quot;Manage Cookies&quot; link in the footer, or by clearing your
+              browser&apos;s local storage.
+            </p>
+            <p className="mt-3">
+              For more information about how Clarity handles data, see{' '}
+              <a
+                href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/consent-mode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-tech-purple underline"
+              >
+                Microsoft Clarity — Consent Mode
+              </a>
+              .
+            </p>
+          </section>
+          <section>
+            <h2 className="text-2xl font-bold text-foreground mb-3">
+              7. Contact
             </h2>
             <p>
               For any questions regarding this Privacy Policy or your data,

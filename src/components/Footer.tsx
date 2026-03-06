@@ -152,6 +152,18 @@ const Footer = () => {
             >
               Terms of Service
             </Link>
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  localStorage.removeItem('mta_cookie_consent')
+                } catch {}
+                window.location.reload()
+              }}
+              className="text-sm text-muted-foreground hover:text-tech-purple transition-colors cursor-pointer"
+            >
+              Manage Cookies
+            </button>
           </div>
         </div>
       </div>
