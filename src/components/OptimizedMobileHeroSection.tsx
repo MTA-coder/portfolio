@@ -111,7 +111,7 @@ const OptimizedMobileHeroSection = () => {
               >
                 <Mail size={18} /> Contact Me
               </Button>
-              <a
+              {/* <a
                 href="/assets/Mohammed%20Tawfeq%20Amiri%20Full%20Stack%20Developer.pdf"
                 download
                 target="_blank"
@@ -125,7 +125,7 @@ const OptimizedMobileHeroSection = () => {
                 >
                   <Download size={18} /> Resume
                 </Button>
-              </a>
+              </a> */}
             </motion.div>
           </div>
         </div>

@@ -1281,7 +1281,15 @@ const ProjectDetail = () => {
   const { setTag, trackEvent } = useClarity()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Instantly jump to top — bypass CSS scroll-behavior: smooth so the page
+    // doesn't slowly animate and lock user scroll input for seconds.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    // #root has overflow-x:hidden which makes it a scroll container;
+    // reset its scroll position too so the user starts at the top.
+    document
+      .getElementById('root')
+      ?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+
     // Track which project the visitor is viewing
     if (project) {
       setTag('projectId', project.id)

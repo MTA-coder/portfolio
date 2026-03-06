@@ -41,7 +41,10 @@ const BlogDetail = () => {
       setPost(currentPost)
 
       // Track which blog post the visitor is reading
-      if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
+      if (
+        typeof window !== 'undefined' &&
+        typeof window.clarity === 'function'
+      ) {
         window.clarity('set', 'blogSlug', currentPost.slug)
         window.clarity('set', 'blogTitle', currentPost.title)
         window.clarity('set', 'blogCategory', currentPost.category)
@@ -63,7 +66,10 @@ const BlogDetail = () => {
       navigate('/blog')
     }
 
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    document
+      .getElementById('root')
+      ?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
   }, [slug, navigate])
 
   if (!post) {

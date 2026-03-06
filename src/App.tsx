@@ -122,8 +122,8 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <CookieConsent />
             <BrowserRouter basename="/portfolio">
+              <CookieConsent />
               {settings.enableHover && <OptimizedBubbleCursor />}
               <ClarityRouteTracker />
               <RouteMetrics />

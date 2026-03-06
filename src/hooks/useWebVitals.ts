@@ -23,27 +23,13 @@ export const useWebVitals = () => {
         const flush = () => {
             if (!queueRef.current.length) return
             const payload = { metrics: queueRef.current, ts: Date.now() }
-            // Only send analytics if a backend endpoint exists (skip on static hosts like GitHub Pages)
-            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-                console.debug('[WebVitals] Skipping beacon on static host', payload)
-                queueRef.current = []
-                return
-            }
-            try {
-                navigator.sendBeacon?.('/__analytics', JSON.stringify(payload))
-            } catch {
-                fetch('/__analytics', {
-                    method: 'POST',
-                    body: JSON.stringify(payload),
-                    keepalive: true,
-                    headers: { 'Content-Type': 'application/json' },
-                }).catch(() => { })
-            }
+            // Only log metrics — no backend endpoint on static hosts or local dev
+            // console.debug('[WebVitals] Collected metrics', payload)
             queueRef.current = []
         }
         const enqueue = (metric: SerializedMetric) => {
             queueRef.current.push(metric)
-            console.log('[PerfMetric]', metric)
+            // console.log('[PerfMetric]', metric)
             if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
             timeoutRef.current = window.setTimeout(flush, 3000)
         }
