@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useClarity } from '@/hooks/useClarity'
 import {
@@ -1284,11 +1284,6 @@ const ProjectDetail = () => {
     // Instantly jump to top — bypass CSS scroll-behavior: smooth so the page
     // doesn't slowly animate and lock user scroll input for seconds.
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
-    // #root has overflow-x:hidden which makes it a scroll container;
-    // reset its scroll position too so the user starts at the top.
-    document
-      .getElementById('root')
-      ?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
 
     // Track which project the visitor is viewing
     if (project) {
@@ -1329,12 +1324,41 @@ const ProjectDetail = () => {
 
   const openLightbox = (index: number) => setLightboxIndex(index)
   const closeLightbox = () => setLightboxIndex(null)
-  const navigateLightbox = (direction: 1 | -1) => {
-    if (lightboxIndex === null) return
-    const nextIndex =
-      (lightboxIndex + direction + mediaItems.length) % mediaItems.length
-    setLightboxIndex(nextIndex)
-  }
+  const navigateLightbox = useCallback(
+    (direction: 1 | -1) => {
+      setLightboxIndex((prev) => {
+        if (prev === null) return null
+        return (prev + direction + mediaItems.length) % mediaItems.length
+      })
+    },
+    [mediaItems.length],
+  )
+
+  // ── Touch-swipe support for lightbox ──────────────────────────────
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const touchDelta = useRef<number>(0)
+  const SWIPE_THRESHOLD = 50 // min px to register a swipe
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    const t = e.touches[0]
+    touchStart.current = { x: t.clientX, y: t.clientY }
+    touchDelta.current = 0
+  }, [])
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!touchStart.current) return
+    touchDelta.current = e.touches[0].clientX - touchStart.current.x
+  }, [])
+
+  const handleTouchEnd = useCallback(() => {
+    if (!touchStart.current) return
+    if (Math.abs(touchDelta.current) > SWIPE_THRESHOLD) {
+      // Swipe left → next, swipe right → prev
+      navigateLightbox(touchDelta.current < 0 ? 1 : -1)
+    }
+    touchStart.current = null
+    touchDelta.current = 0
+  }, [navigateLightbox])
 
   useEffect(() => {
     if (lightboxIndex === null) return
@@ -1368,7 +1392,7 @@ const ProjectDetail = () => {
       document.body.style.paddingRight = originalPaddingRight
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [lightboxIndex, mediaItems.length])
+  }, [lightboxIndex, mediaItems.length, navigateLightbox])
 
   useEffect(() => {
     if (lightboxIndex === null || mediaItems.length < 2) return
@@ -1859,14 +1883,20 @@ const ProjectDetail = () => {
           className="fixed inset-0 z-50 bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
           role="dialog"
           aria-modal="true"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeLightbox()
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <button
             type="button"
             onClick={closeLightbox}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-secondary/60 flex items-center justify-center hover:bg-secondary"
+            className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-secondary/80 flex items-center justify-center hover:bg-secondary active:scale-95 transition-transform"
             aria-label="Close"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
 
           {mediaItems.length > 1 && (
@@ -1874,19 +1904,24 @@ const ProjectDetail = () => {
               <button
                 type="button"
                 onClick={() => navigateLightbox(-1)}
-                className="absolute left-4 md:left-8 w-10 h-10 rounded-full bg-secondary/60 flex items-center justify-center hover:bg-secondary"
+                className="absolute left-2 sm:left-4 md:left-8 z-10 w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-secondary/80 flex items-center justify-center hover:bg-secondary active:scale-95 transition-transform"
                 aria-label="Previous"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={22} />
               </button>
               <button
                 type="button"
                 onClick={() => navigateLightbox(1)}
-                className="absolute right-4 md:right-8 w-10 h-10 rounded-full bg-secondary/60 flex items-center justify-center hover:bg-secondary"
+                className="absolute right-2 sm:right-4 md:right-8 z-10 w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-secondary/80 flex items-center justify-center hover:bg-secondary active:scale-95 transition-transform"
                 aria-label="Next"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={22} />
               </button>
+
+              {/* Image counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-xs text-muted-foreground bg-secondary/70 px-3 py-1 rounded-full">
+                {lightboxIndex + 1} / {mediaItems.length}
+              </div>
             </>
           )}
 

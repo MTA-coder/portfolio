@@ -64,6 +64,11 @@
     @apply border-border;
   }
 
+  html {
+    overflow-x: clip; /* prevent horizontal scroll on the viewport */
+    overscroll-behavior-x: none;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
@@ -318,9 +323,12 @@
     border-radius: 4px;
   }
 
-  /* Prevent horizontal overflow and optimize rendering */
+  /* Prevent horizontal overflow and optimize rendering.
+     Use "clip" instead of "hidden" because hidden forces overflow-y
+     to auto (per CSS spec), turning #root into a scroll container
+     which steals wheel / touch scroll events from the viewport. */
   #root {
-    overflow-x: hidden;
+    overflow-x: clip;
     isolation: isolate;
   }
 

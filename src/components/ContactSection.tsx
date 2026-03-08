@@ -20,7 +20,6 @@ const GeometricSocialIcon = ({
   icon: Icon,
   href,
   label,
-  color = 'tech-purple',
   index = 0,
 }: {
   icon: React.ElementType
@@ -80,7 +79,7 @@ const GeometricSocialIcon = ({
         delay: index * 0.1,
         duration: 0.5,
       }}
-      className="perspective-container group mb-4 w-20"
+      className="perspective-container group mb-2 w-16 sm:w-20"
     >
       <motion.a
         href={href}
@@ -91,20 +90,19 @@ const GeometricSocialIcon = ({
           rotateY: rotateY,
         }}
         whileTap={{ scale: 0.9 }}
-        className="w-16 h-16 preserve-3d flex flex-col items-center"
+        className="!p-0 w-14 h-14 sm:w-16 sm:h-16 preserve-3d flex flex-col items-center"
       >
         <motion.div
-          className={`relative w-16 h-16 bg-${color}/10 backdrop-blur-sm rounded-lg border border-${color}/30
-            overflow-hidden transform-gpu transition-all duration-300 shadow-lg flex items-center justify-center`}
+          className="relative w-14 h-14 sm:w-16 sm:h-16 bg-tech-purple/10 backdrop-blur-sm rounded-lg border border-tech-purple/30 overflow-hidden transform-gpu transition-all duration-300 shadow-lg flex items-center justify-center"
           animate={{
             boxShadow: hovered
-              ? `0 10px 25px -5px rgba(155,135,245,0.5)`
-              : `0 5px 15px -5px rgba(155,135,245,0.2)`,
+              ? '0 10px 25px -5px rgba(155,135,245,0.5)'
+              : '0 5px 15px -5px rgba(155,135,245,0.2)',
           }}
         >
           {/* Front face */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <Icon size={24} className={`text-${color}`} />
+            <Icon size={22} className="text-tech-purple" />
           </div>
 
           {/* Background geometric patterns */}
@@ -112,7 +110,7 @@ const GeometricSocialIcon = ({
             {Array.from({ length: 4 }).map((_, i) => (
               <motion.div
                 key={i}
-                className={`absolute top-1/2 left-1/2 w-8 h-8 bg-${color} rounded-md`}
+                className="absolute top-1/2 left-1/2 w-8 h-8 bg-tech-purple rounded-md"
                 style={{
                   x: -16,
                   y: -16,
@@ -135,7 +133,7 @@ const GeometricSocialIcon = ({
         </motion.div>
 
         <motion.p
-          className={`text-xs mt-2 text-${color} font-medium opacity-80`}
+          className="text-xs mt-1.5 text-tech-purple font-medium opacity-80"
           animate={{
             opacity: hovered ? 1 : 0.8,
           }}
@@ -360,7 +358,7 @@ const ContactSection = () => {
             {/* Social media - with new 3D geometric design */}
             <div className="bg-secondary/30 backdrop-blur-sm p-8 rounded-lg border border-border card-hover">
               <h3 className="text-xl font-bold mb-6">Connect With Me</h3>
-              <div className="flex flex-wrap justify-center gap-6">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
                 <GeometricSocialIcon
                   icon={Linkedin}
                   href="https://www.linkedin.com/in/mohammed-tawfeq-amiri"
