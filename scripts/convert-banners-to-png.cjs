@@ -1,47 +1,55 @@
 const puppeteer = require('puppeteer');
+const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
 /**
- * Convert SVG banners to high-quality PNG images using Puppeteer.
- * Renders at 2x scale for retina/HiDPI quality.
+ * Convert SVG banners to high-quality PNG images.
+ * Renders at 3x supersampled resolution via Puppeteer, then downscales
+ * to the target dimensions using sharp's Lanczos3 resampling for
+ * crisp text, smooth gradients, and sharp filter effects.
  */
-async function convertSvgToPng(svgPath, pngPath, width, height) {
+async function convertSvgToPng(svgPath, pngPath, targetWidth, targetHeight) {
     const absoluteSvg = path.resolve(svgPath);
     const svgContent = fs.readFileSync(absoluteSvg, 'utf-8');
 
+    // Render at 3x for supersampled quality
+    const renderScale = 3;
+
     const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: 'new',
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
     });
 
     const page = await browser.newPage();
 
-    // Render at 2x for high quality (retina)
-    const scale = 2;
     await page.setViewport({
-        width,
-        height,
-        deviceScaleFactor: scale,
+        width: targetWidth,
+        height: targetHeight,
+        deviceScaleFactor: renderScale,
     });
 
-    // Build a minimal HTML page that renders the SVG at exact dimensions
     const html = `<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    width: ${width}px;
-    height: ${height}px;
+  html, body {
+    width: ${targetWidth}px;
+    height: ${targetHeight}px;
     overflow: hidden;
-    background: transparent;
+    background: #0f1117;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
   }
   svg {
-    width: ${width}px;
-    height: ${height}px;
+    width: ${targetWidth}px;
+    height: ${targetHeight}px;
     display: block;
+    shape-rendering: geometricPrecision;
+    image-rendering: optimizeQuality;
   }
 </style>
 </head>
@@ -49,23 +57,33 @@ async function convertSvgToPng(svgPath, pngPath, width, height) {
 </html>`;
 
     await page.setContent(html, { waitUntil: 'networkidle0' });
+    await new Promise((r) => setTimeout(r, 800));
 
-    // Small delay to ensure all filters/gradients are rendered
-    await new Promise((r) => setTimeout(r, 500));
-
-    const outputPath = path.resolve(pngPath);
-    await page.screenshot({
-        path: outputPath,
+    // Screenshot produces a 3x resolution image
+    const hiResBuffer = await page.screenshot({
         type: 'png',
-        clip: { x: 0, y: 0, width, height },
+        clip: { x: 0, y: 0, width: targetWidth, height: targetHeight },
         omitBackground: false,
     });
 
     await browser.close();
 
+    // Downscale to exact target dimensions with Lanczos3 for maximum sharpness
+    const outputPath = path.resolve(pngPath);
+    await sharp(hiResBuffer)
+        .resize(targetWidth, targetHeight, {
+            kernel: sharp.kernel.lanczos3,
+            fastShrinkOnLoad: false,
+        })
+        .png({
+            quality: 100,
+            compressionLevel: 6,
+        })
+        .toFile(outputPath);
+
     const stats = fs.statSync(outputPath);
     const sizeKB = (stats.size / 1024).toFixed(1);
-    console.log(`  ✓ ${path.basename(pngPath)} — ${width * scale}x${height * scale}px (${sizeKB} KB)`);
+    console.log(`  ✓ ${path.basename(pngPath)} — ${targetWidth}x${targetHeight}px (${sizeKB} KB) [rendered at ${renderScale}x]`);
 }
 
 async function main() {
